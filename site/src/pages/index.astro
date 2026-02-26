@@ -3,7 +3,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/sections/Header.astro';
 import Hero from '../components/sections/Hero.astro';
 import TrustBar from '../components/sections/TrustBar.astro';
+import ProcessFlow from '../components/sections/ProcessFlow.astro';
 import Services from '../components/sections/Services.astro';
+import TechnicalScope from '../components/sections/TechnicalScope.astro';
 import WhyChooseUs from '../components/sections/WhyChooseUs.astro';
 import Zones from '../components/sections/Zones.astro';
 import Gallery from '../components/sections/Gallery.astro';
@@ -76,11 +78,13 @@ const schema = buildLocalBusinessSchema(amrContent, new URL(canonical), whatsapp
     ctaLabel={amrContent.cta.primaryLabel}
   />
   <TrustBar points={amrContent.trustPoints} />
+  <ProcessFlow steps={amrContent.processSteps} />
   <Services
     categories={amrContent.serviceCategories}
     whatsappUrl={whatsappServicesUrl}
     ctaLabel={amrContent.cta.servicesLabel}
   />
+  <TechnicalScope items={amrContent.technicalScope} />
   <WhyChooseUs points={amrContent.whyChoosePoints} />
   <Zones zones={amrContent.zones} coverageText={amrContent.zonesCoverageText} />
   <Gallery images={amrContent.gallery} />
