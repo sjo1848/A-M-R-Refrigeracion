@@ -84,6 +84,12 @@ docker compose -f compose.yaml -f compose.staging.yaml down
 ./scripts/preflight_release.sh
 ```
 
+Modo estricto de galeria (falla si faltan fotos reales):
+
+```bash
+ALLOW_MISSING_GALLERY=0 ./scripts/preflight_release.sh
+```
+
 ## Galeria de fotos reales
 
 Ubicacion esperada:
@@ -100,6 +106,14 @@ Chequeo rapido de faltantes:
 ```
 
 Si faltan archivos, la landing usa fallback a placeholder en tiempo de ejecucion.
+
+## Integridad de build
+
+Valida estructura y SEO tecnico del `dist`:
+
+```bash
+./scripts/check_dist_integrity.sh
+```
 
 ## Variables de entorno
 
