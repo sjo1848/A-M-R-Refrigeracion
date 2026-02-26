@@ -23,7 +23,10 @@ A-M-R_Refrigeracion/
 ├── compose.yaml
 ├── compose.staging.yaml
 ├── scripts/
-│   └── preflight_release.sh
+│   ├── preflight_release.sh
+│   ├── check_dist_integrity.sh
+│   ├── check_gallery_assets.sh
+│   └── smoke_http_check.sh
 └── site/
     ├── Dockerfile
     ├── astro.config.mjs
@@ -90,6 +93,8 @@ Modo estricto de galeria (falla si faltan fotos reales):
 ALLOW_MISSING_GALLERY=0 ./scripts/preflight_release.sh
 ```
 
+Incluye smoke HTTP automatico contra staging local (`http://localhost:8080`).
+
 ## Galeria de fotos reales
 
 Ubicacion esperada:
@@ -113,6 +118,14 @@ Valida estructura y SEO tecnico del `dist`:
 
 ```bash
 ./scripts/check_dist_integrity.sh
+```
+
+## Smoke HTTP
+
+Valida health de endpoints y estructura critica del HTML renderizado:
+
+```bash
+./scripts/smoke_http_check.sh http://localhost:8080
 ```
 
 ## CI

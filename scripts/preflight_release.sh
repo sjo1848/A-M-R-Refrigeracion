@@ -6,8 +6,16 @@ EVIDENCE_DIR="$ROOT_DIR/docs/ejecucion/sprint-1/evidencia"
 STAMP="$(date +%Y%m%d_%H%M%S)"
 LOG_FILE="$EVIDENCE_DIR/preflight_${STAMP}.log"
 ALLOW_MISSING_GALLERY="${ALLOW_MISSING_GALLERY:-1}"
+STAGING_UP=0
 
 mkdir -p "$EVIDENCE_DIR"
+
+cleanup_staging() {
+  if [[ "$STAGING_UP" -eq 1 ]]; then
+    docker compose -f "$ROOT_DIR/compose.yaml" -f "$ROOT_DIR/compose.staging.yaml" down >/dev/null 2>&1 || true
+  fi
+}
+trap cleanup_staging EXIT
 
 {
   echo "== PRE-FLIGHT AMR-043 =="
@@ -30,6 +38,7 @@ mkdir -p "$EVIDENCE_DIR"
   echo
   echo "== STAGING NGINX UP =="
   docker compose -f "$ROOT_DIR/compose.yaml" -f "$ROOT_DIR/compose.staging.yaml" up -d --build web_staging
+  STAGING_UP=1
   sleep 3
   echo
   echo "== HTTP HEAD STAGING / =="
@@ -41,8 +50,12 @@ mkdir -p "$EVIDENCE_DIR"
   echo "== HTTP HEAD STAGING /sitemap-index.xml =="
   curl -I --max-time 15 http://localhost:8080/sitemap-index.xml
   echo
+  echo "== SMOKE HTTP STAGING =="
+  "$ROOT_DIR/scripts/smoke_http_check.sh" "http://localhost:8080"
+  echo
   echo "== STAGING DOWN =="
   docker compose -f "$ROOT_DIR/compose.yaml" -f "$ROOT_DIR/compose.staging.yaml" down
+  STAGING_UP=0
   echo
   echo "resultado: OK"
 } | tee "$LOG_FILE"
