@@ -2,9 +2,11 @@
 interface Props {
   brandName: string;
   whatsappUrl: string;
+  phoneUrl: string;
+  callLabel: string;
 }
 
-const { brandName, whatsappUrl } = Astro.props;
+const { brandName, whatsappUrl, phoneUrl, callLabel } = Astro.props;
 ---
 
 <header class="sticky top-0 z-40 border-b border-white/10 bg-[#0b0b0df2] backdrop-blur">
@@ -14,15 +16,24 @@ const { brandName, whatsappUrl } = Astro.props;
       <a href="#servicios" class="hover:text-[var(--color-brand-soft)]">Servicios</a>
       <a href="#diferenciales" class="hover:text-[var(--color-brand-soft)]">Por que elegirnos</a>
       <a href="#zonas" class="hover:text-[var(--color-brand-soft)]">Zonas</a>
+      <a href="#faq" class="hover:text-[var(--color-brand-soft)]">FAQ</a>
       <a href="#testimonios" class="hover:text-[var(--color-brand-soft)]">Testimonios</a>
     </nav>
-    <a
-      href={whatsappUrl}
-      target="_blank"
-      rel="noreferrer"
-      class="hidden rounded-lg bg-[var(--color-whatsapp)] px-4 py-2 text-xs font-bold text-white transition hover:bg-[var(--color-whatsapp-hover)] md:inline-flex md:text-sm"
-    >
-      WhatsApp directo
-    </a>
+    <div class="flex items-center gap-2">
+      <a
+        href={phoneUrl}
+        class="rounded-lg border border-white/20 px-3 py-2 text-xs font-bold text-[var(--color-text)] transition hover:border-[var(--color-brand-soft)] hover:text-[var(--color-brand-soft)] md:text-sm"
+      >
+        {callLabel}
+      </a>
+      <a
+        href={whatsappUrl}
+        target="_blank"
+        rel="noreferrer"
+        class="hidden rounded-lg bg-[var(--color-whatsapp)] px-4 py-2 text-xs font-bold text-white transition hover:bg-[var(--color-whatsapp-hover)] md:inline-flex md:text-sm"
+      >
+        WhatsApp directo
+      </a>
+    </div>
   </div>
 </header>

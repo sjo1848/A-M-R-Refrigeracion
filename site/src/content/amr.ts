@@ -20,6 +20,7 @@ export const amrContent: LandingContent = {
     primaryLabel: 'Solicitar servicio por WhatsApp',
     servicesLabel: 'Consultar por WhatsApp este servicio',
     finalLabel: 'Hablar ahora con A.M.R por WhatsApp',
+    callLabel: 'Llamar ahora',
   },
   legal: {
     urgency: 'Urgencias segun disponibilidad.',
@@ -134,6 +135,28 @@ export const amrContent: LandingContent = {
       name: 'Cliente automotriz',
       quote: 'Revisaron el aire del auto, me explicaron la falla y lo dejaron funcionando.',
       area: 'Guaymallen',
+    },
+  ],
+  faq: [
+    {
+      question: 'Cuanto tarda la respuesta inicial?',
+      answer:
+        'La primera respuesta se gestiona por WhatsApp en el menor tiempo posible segun demanda y horario.',
+    },
+    {
+      question: 'Atienden urgencias?',
+      answer:
+        'Si, se atienden urgencias segun disponibilidad de agenda y ubicacion dentro de Mendoza.',
+    },
+    {
+      question: 'Ofrecen garantia?',
+      answer:
+        'Si, la garantia se define segun tipo de trabajo y estado previo del equipo.',
+    },
+    {
+      question: 'Que informacion conviene enviar para agilizar?',
+      answer:
+        'Zona, tipo de equipo, falla principal y fotos o video corto del problema para diagnostico inicial.',
     },
   ],
   footer: {

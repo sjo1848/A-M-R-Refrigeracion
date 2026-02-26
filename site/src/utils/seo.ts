@@ -5,6 +5,15 @@ export function buildLocalBusinessSchema(
   pageUrl: URL,
   whatsappUrl: string,
 ) {
+  const serviceItems = content.serviceCategories.map((category) => ({
+    '@type': 'Offer',
+    itemOffered: {
+      '@type': 'Service',
+      name: category.title,
+      serviceType: category.items.join(', '),
+    },
+  }));
+
   return {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
@@ -28,6 +37,11 @@ export function buildLocalBusinessSchema(
         areaServed: 'Mendoza',
       },
     ],
+    hasOfferCatalog: {
+      '@type': 'OfferCatalog',
+      name: 'Servicios de refrigeracion',
+      itemListElement: serviceItems,
+    },
     sameAs: [whatsappUrl],
   };
 }

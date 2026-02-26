@@ -7,18 +7,20 @@ import Services from '../components/sections/Services.astro';
 import WhyChooseUs from '../components/sections/WhyChooseUs.astro';
 import Zones from '../components/sections/Zones.astro';
 import Gallery from '../components/sections/Gallery.astro';
+import Faq from '../components/sections/Faq.astro';
 import Testimonials from '../components/sections/Testimonials.astro';
 import FinalCta from '../components/sections/FinalCta.astro';
 import Footer from '../components/sections/Footer.astro';
 import FloatingWhatsapp from '../components/sections/FloatingWhatsapp.astro';
 import { amrContent } from '../content/amr';
-import { buildWhatsAppUrl } from '../utils/whatsapp';
+import { buildTelUrl, buildWhatsAppUrl } from '../utils/whatsapp';
 import { buildLocalBusinessSchema } from '../utils/seo';
 
 const whatsappBaseUrl = buildWhatsAppUrl(
   amrContent.contact.whatsapp,
   amrContent.cta.whatsappMessage,
 );
+const phoneUrl = buildTelUrl(amrContent.contact.phoneLabel);
 const whatsappHeaderUrl = buildWhatsAppUrl(
   amrContent.contact.whatsapp,
   amrContent.cta.whatsappMessage,
@@ -56,13 +58,19 @@ const schema = buildLocalBusinessSchema(amrContent, new URL(canonical), whatsapp
   canonical={canonical}
   schema={schema}
 >
-  <Header brandName={amrContent.brand.name} whatsappUrl={whatsappHeaderUrl} />
+  <Header
+    brandName={amrContent.brand.name}
+    whatsappUrl={whatsappHeaderUrl}
+    phoneUrl={phoneUrl}
+    callLabel={amrContent.cta.callLabel}
+  />
   <Hero
     businessName={amrContent.brand.name}
     h1={amrContent.brand.h1}
     descriptor={amrContent.brand.descriptor}
     subtitle={amrContent.brand.subtitle}
     locationLabel={amrContent.brand.locationLabel}
+    responseTimeLabel={amrContent.contact.responseTimeLabel}
     checks={amrContent.heroChecks}
     whatsappUrl={whatsappHeroUrl}
     ctaLabel={amrContent.cta.primaryLabel}
@@ -76,10 +84,13 @@ const schema = buildLocalBusinessSchema(amrContent, new URL(canonical), whatsapp
   <WhyChooseUs points={amrContent.whyChoosePoints} />
   <Zones zones={amrContent.zones} coverageText={amrContent.zonesCoverageText} />
   <Gallery images={amrContent.gallery} />
+  <Faq items={amrContent.faq} />
   <Testimonials testimonials={amrContent.testimonials} />
   <FinalCta
     whatsappUrl={whatsappFinalUrl}
+    phoneUrl={phoneUrl}
     label={amrContent.cta.finalLabel}
+    callLabel={amrContent.cta.callLabel}
     phoneLabel={amrContent.contact.phoneLabel}
     urgencyLabel={amrContent.legal.urgency}
     warrantyLabel={amrContent.legal.warranty}
@@ -88,6 +99,7 @@ const schema = buildLocalBusinessSchema(amrContent, new URL(canonical), whatsapp
     brandName={amrContent.brand.name}
     businessLabel={amrContent.footer.businessLabel}
     phoneLabel={amrContent.contact.phoneLabel}
+    phoneUrl={phoneUrl}
     addressReference={amrContent.footer.addressReference}
     coverageLabel={amrContent.footer.coverageLabel}
   />

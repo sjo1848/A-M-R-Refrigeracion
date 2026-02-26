@@ -3,11 +3,12 @@ interface Props {
   brandName: string;
   businessLabel: string;
   phoneLabel: string;
+  phoneUrl: string;
   addressReference: string;
   coverageLabel: string;
 }
 
-const { brandName, businessLabel, phoneLabel, addressReference, coverageLabel } = Astro.props;
+const { brandName, businessLabel, phoneLabel, phoneUrl, addressReference, coverageLabel } = Astro.props;
 ---
 
 <footer class="border-t border-white/10 bg-black/35 py-8">
@@ -18,7 +19,10 @@ const { brandName, businessLabel, phoneLabel, addressReference, coverageLabel } 
     </div>
     <div>
       <p class="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--color-brand-soft)]">Contacto y referencia</p>
-      <p class="mt-2 text-sm text-[var(--color-text-muted)]">WhatsApp: {phoneLabel}</p>
+      <p class="mt-2 text-sm text-[var(--color-text-muted)]">
+        Telefono:
+        <a href={phoneUrl} class="ml-1 font-semibold text-[var(--color-text)] hover:text-[var(--color-brand-soft)]">{phoneLabel}</a>
+      </p>
       <p class="mt-1 text-sm text-[var(--color-text-muted)]">{addressReference}</p>
       <p class="mt-1 text-sm text-[var(--color-text-muted)]">{coverageLabel}</p>
     </div>

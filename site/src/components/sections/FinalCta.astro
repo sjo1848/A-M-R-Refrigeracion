@@ -1,13 +1,15 @@
 ---
 interface Props {
   whatsappUrl: string;
+  phoneUrl: string;
   label: string;
+  callLabel: string;
   phoneLabel: string;
   urgencyLabel: string;
   warrantyLabel: string;
 }
 
-const { whatsappUrl, label, phoneLabel, urgencyLabel, warrantyLabel } = Astro.props;
+const { whatsappUrl, phoneUrl, label, callLabel, phoneLabel, urgencyLabel, warrantyLabel } = Astro.props;
 ---
 
 <section class="py-16">
@@ -25,6 +27,12 @@ const { whatsappUrl, label, phoneLabel, urgencyLabel, warrantyLabel } = Astro.pr
           class="inline-flex rounded-xl bg-[var(--color-whatsapp)] px-6 py-3 font-bold text-white transition hover:bg-[var(--color-whatsapp-hover)]"
         >
           {label}
+        </a>
+        <a
+          href={phoneUrl}
+          class="inline-flex rounded-xl border border-white/35 px-6 py-3 font-bold text-white transition hover:border-white"
+        >
+          {callLabel}
         </a>
         <p class="text-sm font-semibold text-slate-100">WhatsApp directo: {phoneLabel}</p>
       </div>
