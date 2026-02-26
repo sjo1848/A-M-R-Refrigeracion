@@ -17,6 +17,27 @@ cleanup_staging() {
 }
 trap cleanup_staging EXIT
 
+wait_http_200() {
+  local url="$1"
+  local label="$2"
+  local attempts="${3:-30}"
+  local wait_seconds="${4:-1}"
+  local status
+  local i
+
+  for (( i=1; i<=attempts; i++ )); do
+    status="$(curl -s -o /dev/null -w "%{http_code}" --max-time 5 "$url" || true)"
+    if [[ "$status" == "200" ]]; then
+      echo "OK   $label listo (HTTP 200) intento $i/$attempts"
+      return 0
+    fi
+    sleep "$wait_seconds"
+  done
+
+  echo "FAIL $label no respondio HTTP 200 tras $attempts intentos"
+  return 1
+}
+
 {
   echo "== PRE-FLIGHT AMR-043 =="
   echo "fecha: $(date -Iseconds)"
@@ -39,7 +60,7 @@ trap cleanup_staging EXIT
   echo "== STAGING NGINX UP =="
   docker compose -f "$ROOT_DIR/compose.yaml" -f "$ROOT_DIR/compose.staging.yaml" up -d --build web_staging
   STAGING_UP=1
-  sleep 3
+  wait_http_200 "http://localhost:8080/" "staging root"
   echo
   echo "== HTTP HEAD STAGING / =="
   curl -I --max-time 15 http://localhost:8080
