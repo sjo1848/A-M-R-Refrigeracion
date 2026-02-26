@@ -27,10 +27,22 @@ const { images } = Astro.props;
             width="1200"
             height="900"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-            class="h-48 w-full object-cover"
+            data-fallback-src="/images/placeholder-work.svg"
+            class="js-gallery-image h-48 w-full object-cover"
           />
         </figure>
       ))}
     </div>
   </div>
 </section>
+
+<script is:inline>
+  document.querySelectorAll('.js-gallery-image').forEach((image) => {
+    image.addEventListener('error', () => {
+      const fallback = image.getAttribute('data-fallback-src');
+      if (fallback && image.getAttribute('src') !== fallback) {
+        image.setAttribute('src', fallback);
+      }
+    });
+  });
+</script>

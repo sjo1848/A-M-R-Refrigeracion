@@ -104,19 +104,19 @@ export const amrContent: LandingContent = {
   zonesCoverageText: 'Toda Mendoza, sujeto a disponibilidad de agenda.',
   gallery: [
     {
-      src: '/images/placeholder-work.svg',
+      src: '/images/gallery/amr-01.jpg',
       alt: 'Trabajo tecnico en heladera domiciliaria',
     },
     {
-      src: '/images/placeholder-work.svg',
+      src: '/images/gallery/amr-02.jpg',
       alt: 'Mantenimiento de equipo de refrigeracion comercial',
     },
     {
-      src: '/images/placeholder-work.svg',
+      src: '/images/gallery/amr-03.jpg',
       alt: 'Revision de sistema de aire automotriz',
     },
     {
-      src: '/images/placeholder-work.svg',
+      src: '/images/gallery/amr-04.jpg',
       alt: 'Diagnostico tecnico a domicilio en Mendoza',
     },
   ],
