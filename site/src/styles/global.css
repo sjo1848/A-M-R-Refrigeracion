@@ -1,0 +1,31 @@
+@import "tailwindcss";
+
+:root {
+  --color-bg: #0b0b0d;
+  --color-surface: #15161a;
+  --color-surface-soft: #1b1d24;
+  --color-brand: #c2144d;
+  --color-brand-soft: #e04a78;
+  --color-text: #f5f7fa;
+  --color-text-muted: #b8bcc6;
+  --color-whatsapp: #25d366;
+  --color-whatsapp-hover: #1ea755;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: radial-gradient(circle at 8% 0%, #1c1f29 0%, #0b0b0d 45%);
+  color: var(--color-text);
+  font-family: "Manrope", "Segoe UI", sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+.container-shell {
+  margin: 0 auto;
+  width: min(100% - 2rem, 1120px);
+}

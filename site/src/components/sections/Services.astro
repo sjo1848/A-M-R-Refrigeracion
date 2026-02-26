@@ -1,0 +1,57 @@
+---
+import SectionTitle from '../ui/SectionTitle.astro';
+import type { ServiceCategory } from '../../content/types';
+
+interface Props {
+  categories: ServiceCategory[];
+  whatsappUrl: string;
+  ctaLabel: string;
+}
+
+const { categories, whatsappUrl, ctaLabel } = Astro.props;
+---
+
+<section class="py-14 md:py-18" id="servicios">
+  <div class="container-shell">
+    <SectionTitle
+      eyebrow="Servicios"
+      title="Soluciones en refrigeracion para hogar, comercio y automotor"
+      description="Priorizado para resolver rapido y evitar perdida de tiempo en diagnosticos confusos."
+    />
+    <div class="grid gap-5 md:grid-cols-3">
+      {categories.map((category) => (
+        <article
+          class:list={[
+            'rounded-2xl border p-6',
+            category.priority === 'high'
+              ? 'border-[var(--color-brand-soft)]/60 bg-[linear-gradient(180deg,rgba(194,20,77,0.22),rgba(21,22,26,0.95))]'
+              : 'border-white/10 bg-[var(--color-surface)]',
+          ]}
+        >
+          <h3 class="text-lg font-extrabold text-[var(--color-text)]">{category.title}</h3>
+          {category.priority === 'high' && (
+            <p class="mt-2 text-xs font-semibold uppercase tracking-[0.16em] text-[var(--color-brand-soft)]">Prioridad comercial</p>
+          )}
+          <ul class="mt-4 space-y-2 text-sm text-[var(--color-text-muted)]">
+            {category.items.map((item) => (
+              <li class="flex gap-2">
+                <span class="mt-1 inline-block h-2 w-2 rounded-full bg-[var(--color-whatsapp)]"></span>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </article>
+      ))}
+    </div>
+    <div class="mt-8">
+      <a
+        href={whatsappUrl}
+        target="_blank"
+        rel="noreferrer"
+        class="inline-flex rounded-xl bg-[var(--color-whatsapp)] px-6 py-3 text-sm font-extrabold text-white transition hover:bg-[var(--color-whatsapp-hover)] md:text-base"
+      >
+        {ctaLabel}
+      </a>
+    </div>
+  </div>
+</section>

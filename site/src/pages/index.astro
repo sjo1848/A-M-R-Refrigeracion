@@ -1,0 +1,95 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/sections/Header.astro';
+import Hero from '../components/sections/Hero.astro';
+import TrustBar from '../components/sections/TrustBar.astro';
+import Services from '../components/sections/Services.astro';
+import WhyChooseUs from '../components/sections/WhyChooseUs.astro';
+import Zones from '../components/sections/Zones.astro';
+import Gallery from '../components/sections/Gallery.astro';
+import Testimonials from '../components/sections/Testimonials.astro';
+import FinalCta from '../components/sections/FinalCta.astro';
+import Footer from '../components/sections/Footer.astro';
+import FloatingWhatsapp from '../components/sections/FloatingWhatsapp.astro';
+import { amrContent } from '../content/amr';
+import { buildWhatsAppUrl } from '../utils/whatsapp';
+import { buildLocalBusinessSchema } from '../utils/seo';
+
+const whatsappBaseUrl = buildWhatsAppUrl(
+  amrContent.contact.whatsapp,
+  amrContent.cta.whatsappMessage,
+);
+const whatsappHeaderUrl = buildWhatsAppUrl(
+  amrContent.contact.whatsapp,
+  amrContent.cta.whatsappMessage,
+  'header',
+);
+const whatsappHeroUrl = buildWhatsAppUrl(
+  amrContent.contact.whatsapp,
+  amrContent.cta.whatsappMessage,
+  'hero',
+);
+const whatsappServicesUrl = buildWhatsAppUrl(
+  amrContent.contact.whatsapp,
+  amrContent.cta.whatsappMessage,
+  'servicios',
+);
+const whatsappFinalUrl = buildWhatsAppUrl(
+  amrContent.contact.whatsapp,
+  amrContent.cta.whatsappMessage,
+  'final',
+);
+const whatsappFloatingUrl = buildWhatsAppUrl(
+  amrContent.contact.whatsapp,
+  amrContent.cta.whatsappMessage,
+  'flotante',
+);
+const siteUrl = import.meta.env.PUBLIC_SITE_URL;
+const canonical = siteUrl ? new URL('/', siteUrl).toString() : Astro.url.toString();
+const schema = buildLocalBusinessSchema(amrContent, new URL(canonical), whatsappBaseUrl);
+---
+
+<BaseLayout
+  title={amrContent.seo.title}
+  description={amrContent.seo.description}
+  keywords={amrContent.seo.keywords}
+  canonical={canonical}
+  schema={schema}
+>
+  <Header brandName={amrContent.brand.name} whatsappUrl={whatsappHeaderUrl} />
+  <Hero
+    businessName={amrContent.brand.name}
+    h1={amrContent.brand.h1}
+    descriptor={amrContent.brand.descriptor}
+    subtitle={amrContent.brand.subtitle}
+    locationLabel={amrContent.brand.locationLabel}
+    checks={amrContent.heroChecks}
+    whatsappUrl={whatsappHeroUrl}
+    ctaLabel={amrContent.cta.primaryLabel}
+  />
+  <TrustBar points={amrContent.trustPoints} />
+  <Services
+    categories={amrContent.serviceCategories}
+    whatsappUrl={whatsappServicesUrl}
+    ctaLabel={amrContent.cta.servicesLabel}
+  />
+  <WhyChooseUs points={amrContent.whyChoosePoints} />
+  <Zones zones={amrContent.zones} coverageText={amrContent.zonesCoverageText} />
+  <Gallery images={amrContent.gallery} />
+  <Testimonials testimonials={amrContent.testimonials} />
+  <FinalCta
+    whatsappUrl={whatsappFinalUrl}
+    label={amrContent.cta.finalLabel}
+    phoneLabel={amrContent.contact.phoneLabel}
+    urgencyLabel={amrContent.legal.urgency}
+    warrantyLabel={amrContent.legal.warranty}
+  />
+  <Footer
+    brandName={amrContent.brand.name}
+    businessLabel={amrContent.footer.businessLabel}
+    phoneLabel={amrContent.contact.phoneLabel}
+    addressReference={amrContent.footer.addressReference}
+    coverageLabel={amrContent.footer.coverageLabel}
+  />
+  <FloatingWhatsapp whatsappUrl={whatsappFloatingUrl} />
+</BaseLayout>

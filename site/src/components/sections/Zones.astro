@@ -1,0 +1,28 @@
+---
+import SectionTitle from '../ui/SectionTitle.astro';
+
+interface Props {
+  zones: string[];
+  coverageText: string;
+}
+
+const { zones, coverageText } = Astro.props;
+---
+
+<section class="py-14" id="zonas">
+  <div class="container-shell">
+    <SectionTitle
+      eyebrow="Cobertura"
+      title="Zonas de atencion en Mendoza"
+      description="Atencion coordinada por WhatsApp para visitas a domicilio y trabajos programados."
+    />
+    <div class="rounded-2xl border border-white/10 bg-[var(--color-surface)] p-6">
+      <ul class="grid gap-3 text-sm font-semibold text-[var(--color-text)] sm:grid-cols-2 lg:grid-cols-3">
+        {zones.map((zone) => (
+          <li class="rounded-lg border border-white/10 bg-[var(--color-surface-soft)] px-4 py-3">{zone}</li>
+        ))}
+      </ul>
+      <p class="mt-5 text-sm font-semibold text-[var(--color-brand-soft)]">{coverageText}</p>
+    </div>
+  </div>
+</section>

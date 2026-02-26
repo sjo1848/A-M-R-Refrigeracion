@@ -1,0 +1,17 @@
+---
+interface Props {
+  points: string[];
+}
+
+const { points } = Astro.props;
+---
+
+<section class="-mt-6 pb-6 md:-mt-8">
+  <div class="container-shell grid gap-3 md:grid-cols-2 lg:grid-cols-5">
+    {points.map((point) => (
+      <article class="rounded-xl border border-white/10 bg-[var(--color-surface)] p-4">
+        <p class="text-sm font-semibold text-[var(--color-text)]">{point}</p>
+      </article>
+    ))}
+  </div>
+</section>

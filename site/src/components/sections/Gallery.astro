@@ -1,0 +1,36 @@
+---
+import SectionTitle from '../ui/SectionTitle.astro';
+import type { GalleryItem } from '../../content/types';
+
+interface Props {
+  images: GalleryItem[];
+}
+
+const { images } = Astro.props;
+---
+
+<section class="py-14" id="trabajos">
+  <div class="container-shell">
+    <SectionTitle
+      eyebrow="Trabajos"
+      title="Muestras de servicios realizados"
+      description="Espacio listo para reemplazar con fotos reales del caso piloto A.M.R."
+    />
+    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      {images.map((image) => (
+        <figure class="overflow-hidden rounded-xl border border-white/10 bg-[var(--color-surface)]">
+          <img
+            src={image.src}
+            alt={image.alt}
+            loading="lazy"
+            decoding="async"
+            width="1200"
+            height="900"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+            class="h-48 w-full object-cover"
+          />
+        </figure>
+      ))}
+    </div>
+  </div>
+</section>

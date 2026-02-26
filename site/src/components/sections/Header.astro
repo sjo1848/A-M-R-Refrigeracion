@@ -1,0 +1,28 @@
+---
+interface Props {
+  brandName: string;
+  whatsappUrl: string;
+}
+
+const { brandName, whatsappUrl } = Astro.props;
+---
+
+<header class="sticky top-0 z-40 border-b border-white/10 bg-[#0b0b0df2] backdrop-blur">
+  <div class="container-shell flex items-center justify-between py-3">
+    <p class="text-sm font-extrabold uppercase tracking-[0.12em] text-[var(--color-text)]">{brandName}</p>
+    <nav class="hidden gap-5 text-sm font-semibold text-[var(--color-text-muted)] md:flex">
+      <a href="#servicios" class="hover:text-[var(--color-brand-soft)]">Servicios</a>
+      <a href="#diferenciales" class="hover:text-[var(--color-brand-soft)]">Por que elegirnos</a>
+      <a href="#zonas" class="hover:text-[var(--color-brand-soft)]">Zonas</a>
+      <a href="#testimonios" class="hover:text-[var(--color-brand-soft)]">Testimonios</a>
+    </nav>
+    <a
+      href={whatsappUrl}
+      target="_blank"
+      rel="noreferrer"
+      class="hidden rounded-lg bg-[var(--color-whatsapp)] px-4 py-2 text-xs font-bold text-white transition hover:bg-[var(--color-whatsapp-hover)] md:inline-flex md:text-sm"
+    >
+      WhatsApp directo
+    </a>
+  </div>
+</header>

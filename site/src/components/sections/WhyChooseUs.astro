@@ -1,0 +1,28 @@
+---
+import SectionTitle from '../ui/SectionTitle.astro';
+import type { WhyChoosePoint } from '../../content/types';
+
+interface Props {
+  points: WhyChoosePoint[];
+}
+
+const { points } = Astro.props;
+---
+
+<section class="py-14" id="diferenciales">
+  <div class="container-shell">
+    <SectionTitle
+      eyebrow="Por que elegir A.M.R"
+      title="Diferenciales que mejoran la confianza antes de escribir"
+      description="Bloque orientado a conversion con experiencia, claridad tecnica y reglas operativas transparentes."
+    />
+    <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+      {points.map((point) => (
+        <article class="rounded-2xl border border-white/10 bg-[var(--color-surface)] p-5">
+          <h3 class="text-base font-extrabold text-[var(--color-text)]">{point.title}</h3>
+          <p class="mt-2 text-sm text-[var(--color-text-muted)]">{point.description}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
