@@ -16,27 +16,19 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: "20"
-          cache: "npm"
-          cache-dependency-path: site/package-lock.json
-
-      - name: Install dependencies
-        run: npm ci
-        working-directory: site
-
-      - name: Type and Astro check
-        run: npm run check
-        working-directory: site
-
-      - name: Production build
-        run: npm run build
-        working-directory: site
+      - name: Check + build (containerized)
+        run: >
+          docker run --rm
+          -v "$GITHUB_WORKSPACE/site":/app
+          -w /app
+          node:20-alpine
+          sh -lc "npm ci && npm run check && npm run build"
 
       - name: Dist integrity checks
         run: ./scripts/check_dist_integrity.sh
 
       - name: Gallery readiness (allow missing in CI)
         run: ./scripts/check_gallery_assets.sh --allow-missing
+
+      - name: Staging smoke checks (containerized)
+        run: ./scripts/ci_smoke_staging.sh
