@@ -115,6 +115,20 @@ Valida estructura y SEO tecnico del `dist`:
 ./scripts/check_dist_integrity.sh
 ```
 
+## CI
+
+Workflow incluido:
+
+- `.github/workflows/ci.yml`
+
+Quality gate en cada push/PR:
+
+- `npm ci` en `site/`
+- `npm run check`
+- `npm run build`
+- `./scripts/check_dist_integrity.sh`
+- `./scripts/check_gallery_assets.sh --allow-missing`
+
 ## Variables de entorno
 
 Archivo base:
