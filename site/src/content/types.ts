@@ -20,6 +20,11 @@ export interface Testimonial {
   area: string;
 }
 
+export interface FaqItem {
+  question: string;
+  answer: string;
+}
+
 export interface LandingContent {
   brand: {
     name: string;
@@ -38,6 +43,7 @@ export interface LandingContent {
     primaryLabel: string;
     servicesLabel: string;
     finalLabel: string;
+    callLabel: string;
   };
   legal: {
     urgency: string;
@@ -51,6 +57,7 @@ export interface LandingContent {
   zonesCoverageText: string;
   gallery: GalleryItem[];
   testimonials: Testimonial[];
+  faq: FaqItem[];
   footer: {
     addressReference: string;
     coverageLabel: string;

@@ -37,6 +37,9 @@ const { title, description, keywords, canonical, schema } = Astro.props;
     {schema && <script is:inline type="application/ld+json" set:html={JSON.stringify(schema)} />}
   </head>
   <body class="bg-[var(--color-bg)] text-[var(--color-text)] antialiased">
-    <slot />
+    <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+    <main id="main-content">
+      <slot />
+    </main>
   </body>
 </html>

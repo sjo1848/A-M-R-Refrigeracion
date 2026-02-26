@@ -8,3 +8,8 @@ export function buildWhatsAppUrl(
   const text = encodeURIComponent(`${message.trim()}${sourceSuffix}`);
   return `https://wa.me/${cleanedPhone}?text=${text}`;
 }
+
+export function buildTelUrl(phone: string): string {
+  const cleaned = phone.replace(/[^\d+]/g, '');
+  return `tel:${cleaned}`;
+}
