@@ -162,19 +162,19 @@ export const amrContent: LandingContent = {
   gallery: [
     {
       src: '/images/gallery/amr-01.jpg',
-      alt: 'Trabajo tecnico en heladera domiciliaria',
+      alt: 'Tecnico de A.M.R en mantenimiento de sistemas de aire comercial',
     },
     {
       src: '/images/gallery/amr-02.jpg',
-      alt: 'Mantenimiento de equipo de refrigeracion comercial',
+      alt: 'Servicio tecnico de aire acondicionado split en instalacion domiciliaria',
     },
     {
       src: '/images/gallery/amr-03.jpg',
-      alt: 'Revision de sistema de aire automotriz',
+      alt: 'Trabajo de aire acondicionado automotor con equipo de diagnostico en via publica',
     },
     {
       src: '/images/gallery/amr-04.jpg',
-      alt: 'Diagnostico tecnico a domicilio en Mendoza',
+      alt: 'Diagnostico de refrigeracion automotriz en camion de flota',
     },
   ],
   testimonials: [
