@@ -26,7 +26,8 @@ A-M-R_Refrigeracion/
 │   ├── preflight_release.sh
 │   ├── check_dist_integrity.sh
 │   ├── check_gallery_assets.sh
-│   └── smoke_http_check.sh
+│   ├── smoke_http_check.sh
+│   └── ci_smoke_staging.sh
 └── site/
     ├── Dockerfile
     ├── astro.config.mjs
@@ -136,11 +137,10 @@ Workflow incluido:
 
 Quality gate en cada push/PR:
 
-- `npm ci` en `site/`
-- `npm run check`
-- `npm run build`
+- `npm ci && npm run check && npm run build` en contenedor `node:20-alpine`
 - `./scripts/check_dist_integrity.sh`
 - `./scripts/check_gallery_assets.sh --allow-missing`
+- `./scripts/ci_smoke_staging.sh`
 
 ## Variables de entorno
 
