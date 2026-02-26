@@ -84,6 +84,23 @@ docker compose -f compose.yaml -f compose.staging.yaml down
 ./scripts/preflight_release.sh
 ```
 
+## Galeria de fotos reales
+
+Ubicacion esperada:
+
+- `site/public/images/gallery/amr-01.jpg`
+- `site/public/images/gallery/amr-02.jpg`
+- `site/public/images/gallery/amr-03.jpg`
+- `site/public/images/gallery/amr-04.jpg`
+
+Chequeo rapido de faltantes:
+
+```bash
+./scripts/check_gallery_assets.sh
+```
+
+Si faltan archivos, la landing usa fallback a placeholder en tiempo de ejecucion.
+
 ## Variables de entorno
 
 Archivo base:
