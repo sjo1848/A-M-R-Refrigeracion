@@ -73,7 +73,7 @@ assert_count_eq "h1_count" "$h1_count" 1
 assert_count_ge "wa_link_count" "$wa_count" 5
 assert_count_ge "tel_link_count" "$tel_count" 1
 
-for section in servicios diferenciales zonas faq testimonios; do
+for section in servicios proceso especialidades diferenciales zonas faq testimonios; do
   assert_contains "section_$section" "id=\"$section\""
 done
 

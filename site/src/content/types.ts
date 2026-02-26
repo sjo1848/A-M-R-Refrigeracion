@@ -9,6 +9,17 @@ export interface WhyChoosePoint {
   description: string;
 }
 
+export interface ProcessStep {
+  step: string;
+  title: string;
+  description: string;
+}
+
+export interface TechnicalScopeItem {
+  title: string;
+  points: string[];
+}
+
 export interface GalleryItem {
   src: string;
   alt: string;
@@ -51,7 +62,9 @@ export interface LandingContent {
   };
   heroChecks: string[];
   trustPoints: string[];
+  processSteps: ProcessStep[];
   serviceCategories: ServiceCategory[];
+  technicalScope: TechnicalScopeItem[];
   whyChoosePoints: WhyChoosePoint[];
   zones: string[];
   zonesCoverageText: string;

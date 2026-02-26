@@ -6,7 +6,7 @@ export const amrContent: LandingContent = {
     h1: 'Servicio Tecnico en Refrigeracion en Mendoza',
     descriptor: 'Domiciliaria • Comercial • Automotriz • Urgencias',
     subtitle:
-      'Tecnico matriculado con atencion en toda Mendoza. Respuesta rapida por WhatsApp, servicio a domicilio y atencion profesional.',
+      'Tecnico matriculado con atencion en toda Mendoza. Diagnostico claro, presupuesto antes de intervenir y servicio a domicilio con seguimiento por WhatsApp.',
     locationLabel: 'Luzuriaga, Maipu - cobertura en Gran Mendoza',
   },
   contact: {
@@ -33,10 +33,37 @@ export const amrContent: LandingContent = {
   ],
   trustPoints: [
     'Tecnico matriculado',
-    'Toda Mendoza',
-    'Urgencias segun disponibilidad',
+    'Presupuesto claro antes de trabajar',
+    'Cobertura real en Gran Mendoza',
+    'Urgencias segun disponibilidad de agenda',
     'Factura y medios de pago',
-    'Respuesta rapida por WhatsApp',
+    'Respuesta rapida por WhatsApp y llamada',
+  ],
+  processSteps: [
+    {
+      step: 'Paso 1',
+      title: 'Contacto y prediagnostico',
+      description:
+        'El cliente envia zona, tipo de equipo y falla por WhatsApp para clasificar urgencia y definir visita.',
+    },
+    {
+      step: 'Paso 2',
+      title: 'Visita tecnica',
+      description:
+        'Se revisa el equipo en domicilio o comercio, validando estado general y causa probable de la falla.',
+    },
+    {
+      step: 'Paso 3',
+      title: 'Presupuesto y aprobacion',
+      description:
+        'Se informa costo estimado, alcance y tiempos. El trabajo se inicia solo con aprobacion del cliente.',
+    },
+    {
+      step: 'Paso 4',
+      title: 'Reparacion y garantia',
+      description:
+        'Se ejecuta la solucion acordada, se prueban resultados y se informa la garantia segun tipo de trabajo.',
+    },
   ],
   serviceCategories: [
     {
@@ -67,6 +94,35 @@ export const amrContent: LandingContent = {
         'Atencion tecnica general',
         'Servicio a domicilio',
         'Urgencias segun disponibilidad',
+      ],
+    },
+  ],
+  technicalScope: [
+    {
+      title: 'Heladeras y freezers',
+      points: [
+        'Enfria poco o no arranca',
+        'Perdida de gas y carga refrigerante',
+        'No frost con exceso de hielo',
+        'Fallas de termostato o sensores',
+      ],
+    },
+    {
+      title: 'Refrigeracion comercial',
+      points: [
+        'Heladeras y exhibidoras comerciales',
+        'Control de temperatura inestable',
+        'Revision de compresor y ventilacion',
+        'Mantenimiento preventivo programado',
+      ],
+    },
+    {
+      title: 'Aire automotriz',
+      points: [
+        'Baja eficiencia de enfriamiento',
+        'Carga y control de gas',
+        'Revision de perdidas y presiones',
+        'Chequeo de calefaccion automotriz',
       ],
     },
   ],
@@ -101,7 +157,8 @@ export const amrContent: LandingContent = {
     'Las Heras',
     'Chacras de Coria',
   ],
-  zonesCoverageText: 'Toda Mendoza, sujeto a disponibilidad de agenda.',
+  zonesCoverageText:
+    'Cobertura en Gran Mendoza con coordinacion por WhatsApp. Tiempos de visita sujetos a zona y disponibilidad.',
   gallery: [
     {
       src: '/images/gallery/amr-01.jpg',
@@ -139,7 +196,7 @@ export const amrContent: LandingContent = {
   ],
   faq: [
     {
-      question: 'Cuanto tarda la respuesta inicial?',
+      question: 'Cuanto tarda la respuesta inicial por WhatsApp?',
       answer:
         'La primera respuesta se gestiona por WhatsApp en el menor tiempo posible segun demanda y horario.',
     },
@@ -149,6 +206,11 @@ export const amrContent: LandingContent = {
         'Si, se atienden urgencias segun disponibilidad de agenda y ubicacion dentro de Mendoza.',
     },
     {
+      question: 'Se informa presupuesto antes de reparar?',
+      answer:
+        'Si. Luego del diagnostico se informa costo estimado y alcance del trabajo para aprobacion previa.',
+    },
+    {
       question: 'Ofrecen garantia?',
       answer:
         'Si, la garantia se define segun tipo de trabajo y estado previo del equipo.',
@@ -156,7 +218,7 @@ export const amrContent: LandingContent = {
     {
       question: 'Que informacion conviene enviar para agilizar?',
       answer:
-        'Zona, tipo de equipo, falla principal y fotos o video corto del problema para diagnostico inicial.',
+        'Zona, tipo de equipo, falla principal y fotos o video corto del problema para acelerar el prediagnostico.',
     },
   ],
   footer: {
