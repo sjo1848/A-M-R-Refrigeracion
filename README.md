@@ -20,6 +20,7 @@ Implementacion frontend en Astro con ejecucion 100% en contenedores.
 
 ```text
 A-M-R_Refrigeracion/
+├── Makefile
 ├── compose.yaml
 ├── compose.staging.yaml
 ├── scripts/
@@ -34,6 +35,7 @@ A-M-R_Refrigeracion/
     ├── package.json
     ├── public/
     └── src/
+        ├── assets/
         ├── components/
         ├── content/
         ├── layouts/
@@ -50,6 +52,12 @@ Desde la raiz del repo:
 docker compose up --build
 ```
 
+Alternativa equivalente:
+
+```bash
+make dev
+```
+
 URL:
 
 - `http://localhost:4321`
@@ -60,16 +68,34 @@ Detener:
 docker compose down
 ```
 
+Alternativa equivalente:
+
+```bash
+make down
+```
+
 ## Validacion tecnica
 
 ```bash
 docker run --rm -v "$PWD/site":/app -w /app node:20-alpine sh -lc "npm run check && npm run build"
 ```
 
+Alternativa equivalente:
+
+```bash
+make check
+```
+
 ## Staging local
 
 ```bash
 docker compose -f compose.yaml -f compose.staging.yaml up --build -d web_staging
+```
+
+Alternativa equivalente:
+
+```bash
+make staging
 ```
 
 URL:
@@ -82,10 +108,22 @@ Detener:
 docker compose -f compose.yaml -f compose.staging.yaml down
 ```
 
+Alternativa equivalente:
+
+```bash
+make staging-down
+```
+
 ## Preflight de release
 
 ```bash
 ./scripts/preflight_release.sh
+```
+
+Alternativa equivalente:
+
+```bash
+make preflight
 ```
 
 Modo estricto de galeria (falla si faltan fotos reales):
@@ -99,6 +137,13 @@ Incluye smoke HTTP automatico contra staging local (`http://localhost:8080`).
 ## Galeria de fotos reales
 
 Ubicacion esperada:
+
+- `site/src/assets/gallery/amr-01.jpg`
+- `site/src/assets/gallery/amr-02.jpg`
+- `site/src/assets/gallery/amr-03.jpg`
+- `site/src/assets/gallery/amr-04.jpg`
+
+Compatibilidad de rutas legacy (`/images/gallery/*`) para paginas de servicio:
 
 - `site/public/images/gallery/amr-01.jpg`
 - `site/public/images/gallery/amr-02.jpg`
