@@ -3,10 +3,10 @@ import type { LandingContent } from './types';
 export const amrContent: LandingContent = {
   brand: {
     name: 'A.M.R Refrigeracion',
-    h1: 'Servicio Tecnico en Refrigeracion en Mendoza',
+    h1: 'Servicio Tecnico Profesional de Refrigeracion en Mendoza',
     descriptor: 'Domiciliaria • Comercial • Automotriz • Urgencias',
     subtitle:
-      'Tecnico matriculado con atencion en toda Mendoza. Diagnostico claro, presupuesto antes de intervenir y servicio a domicilio con seguimiento por WhatsApp.',
+      'Tecnico matriculado con cobertura en Gran Mendoza. Diagnostico claro, presupuesto previo y trabajo ejecutado con trazabilidad tecnica.',
     locationLabel: 'Luzuriaga, Maipu - cobertura en Gran Mendoza',
   },
   contact: {
@@ -17,9 +17,9 @@ export const amrContent: LandingContent = {
   cta: {
     whatsappMessage:
       'Hola, necesito servicio tecnico de refrigeracion.\nEstoy en [zona].\nEl equipo es: [heladera / lavarropas / aire / automotor].\nEl problema es: [detalle].\nPodes indicarme disponibilidad?',
-    primaryLabel: 'Solicitar servicio por WhatsApp',
-    servicesLabel: 'Consultar por WhatsApp este servicio',
-    finalLabel: 'Hablar ahora con A.M.R por WhatsApp',
+    primaryLabel: 'Solicitar diagnostico por WhatsApp',
+    servicesLabel: 'Pedir presupuesto por WhatsApp',
+    finalLabel: 'Hablar con soporte tecnico por WhatsApp',
     callLabel: 'Llamar ahora',
   },
   legal: {
@@ -32,7 +32,7 @@ export const amrContent: LandingContent = {
       'La garantia aplica segun tipo de reparacion y estado inicial del equipo.',
     ],
     commercialNotice:
-      'Condiciones comerciales y tecnicas informadas antes de iniciar cada trabajo.',
+      'Condiciones comerciales y tecnicas informadas y aprobadas antes de iniciar cada trabajo.',
   },
   heroChecks: [
     'Tecnico matriculado',
@@ -339,9 +339,9 @@ export const amrContent: LandingContent = {
     businessLabel: 'Servicio tecnico de refrigeracion domiciliaria, comercial y automotriz.',
   },
   seo: {
-    title: 'A.M.R Refrigeracion en Mendoza | Servicio Tecnico por WhatsApp',
+    title: 'A.M.R Refrigeracion en Mendoza | Tecnico Matriculado',
     description:
-      'Servicio tecnico de refrigeracion en Mendoza para hogar, comercio y automotor. Contacto rapido por WhatsApp.',
+      'Servicio tecnico profesional de refrigeracion en Mendoza para hogar, comercio y automotor. Diagnostico y presupuesto por WhatsApp.',
     keywords:
       'servicio tecnico refrigeracion mendoza, reparacion heladeras maipu, aire acondicionado automotor mendoza, tecnico matriculado refrigeracion',
   },
