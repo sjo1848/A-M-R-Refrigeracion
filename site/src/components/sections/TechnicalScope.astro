@@ -4,28 +4,31 @@ import type { TechnicalScopeItem } from '../../content/types';
 
 interface Props {
   items: TechnicalScopeItem[];
+  whatsappUrl?: string;
 }
 
-const { items } = Astro.props;
+const { items, whatsappUrl } = Astro.props;
 ---
 
 <section class="py-14" id="especialidades">
   <div class="container-shell">
     <SectionTitle
       eyebrow="Especialidades tecnicas"
-      title="Equipos y fallas que resolvemos todos los dias"
-      description="Orientado a consultas reales: detalle tecnico sin ruido para acelerar diagnostico y presupuesto."
+      title="Nos especializamos en equipos y fallas de alta demanda"
+      description="Diagnostico tecnico y reparacion orientada a resultados, con presupuesto claro antes de intervenir."
     />
+
     <div class="grid gap-6 md:grid-cols-3">
       {items.map((item) => (
-        <article class="rounded-2xl border border-black/5 dark:border-white/10 bg-[var(--color-surface)] p-6 shadow-sm transition-shadow hover:shadow-md">
-          <h3 class="text-lg font-extrabold text-[var(--color-text)] flex items-center gap-2">
+        <article class="panel p-6 transition-all duration-200 hover:-translate-y-1 hover:shadow-[var(--shadow-card-hover)]">
+          <p class="text-[11px] font-bold uppercase tracking-[0.14em] text-[var(--color-brand-soft)]">Especialidad</p>
+          <h3 class="mt-2 flex items-center gap-2 text-2xl font-extrabold leading-[1.05] text-[var(--color-text)]">
             <span class="h-1.5 w-1.5 rounded-full bg-[var(--color-brand-soft)]"></span>
             {item.title}
           </h3>
           <ul class="mt-5 space-y-3 text-sm text-[var(--color-text-muted)]">
             {item.points.map((point) => (
-              <li class="flex gap-3 items-start">
+              <li class="flex items-start gap-3">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="mt-0.5 size-3.5 shrink-0 text-[var(--color-whatsapp)]">
                   <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
                 </svg>
@@ -33,6 +36,16 @@ const { items } = Astro.props;
               </li>
             ))}
           </ul>
+          {whatsappUrl && (
+            <a
+              href={whatsappUrl}
+              target="_blank"
+              rel="noreferrer"
+              class="mt-6 inline-flex items-center gap-2 rounded-lg border border-[var(--color-border)] bg-[var(--color-surface-soft)] px-4 py-2 text-xs font-bold uppercase tracking-[0.08em] text-[var(--color-text)] transition hover:border-[var(--color-brand-soft)]"
+            >
+              Solicitar presupuesto
+            </a>
+          )}
         </article>
       ))}
     </div>

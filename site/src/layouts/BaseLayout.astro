@@ -18,7 +18,7 @@ const { title, description, keywords, canonical, schema } = Astro.props;
     <meta charset="UTF-8" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800&family=Barlow+Condensed:wght@600;700;800&display=swap" rel="stylesheet">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
@@ -26,7 +26,7 @@ const { title, description, keywords, canonical, schema } = Astro.props;
     <meta name="description" content={description} />
     {keywords && <meta name="keywords" content={keywords} />}
     <meta name="robots" content="index,follow" />
-    <meta name="theme-color" content="#0b0b0d" />
+    <meta name="theme-color" content="#0f4b78" />
     <meta property="og:locale" content="es_AR" />
     {canonical && <link rel="canonical" href={canonical} />}
     <meta property="og:type" content="website" />
@@ -42,7 +42,7 @@ const { title, description, keywords, canonical, schema } = Astro.props;
     <link rel="icon" href="/favicon.ico" />
     {schema && <script is:inline type="application/ld+json" set:html={JSON.stringify(schema)} />}
   </head>
-  <body class="bg-[var(--color-bg)] text-[var(--color-text)] antialiased">
+  <body class="bg-[var(--color-bg)] pb-20 text-[var(--color-text)] antialiased md:pb-0">
     <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
     <main id="main-content">
       <slot />

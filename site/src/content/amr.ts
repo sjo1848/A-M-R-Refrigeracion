@@ -25,6 +25,14 @@ export const amrContent: LandingContent = {
   legal: {
     urgency: 'Urgencias segun disponibilidad.',
     warranty: 'Garantia segun tipo de trabajo.',
+    serviceConditions: [
+      'Toda intervencion se realiza con diagnostico previo y aprobacion del cliente.',
+      'El presupuesto informado corresponde al alcance tecnico validado en la revision.',
+      'Tiempos de visita y entrega sujetos a agenda, zona y disponibilidad de repuestos.',
+      'La garantia aplica segun tipo de reparacion y estado inicial del equipo.',
+    ],
+    commercialNotice:
+      'Condiciones comerciales y tecnicas informadas antes de iniciar cada trabajo.',
   },
   heroChecks: [
     'Tecnico matriculado',
@@ -38,6 +46,46 @@ export const amrContent: LandingContent = {
     'Urgencias segun disponibilidad de agenda',
     'Factura y medios de pago',
     'Respuesta rapida por WhatsApp y llamada',
+  ],
+  proofMetrics: [
+    {
+      value: '12+',
+      label: 'Anios de trabajo tecnico',
+      detail: 'Experiencia sostenida en refrigeracion domiciliaria, comercial y automotriz.',
+    },
+    {
+      value: '3',
+      label: 'Lineas de servicio activas',
+      detail: 'Atencion residencial, comercial y automotor con enfoque tecnico especifico.',
+    },
+    {
+      value: 'Gran Mendoza',
+      label: 'Cobertura operativa',
+      detail: 'Maipu, Capital, Guaymallen, Godoy Cruz, Lujan de Cuyo y zonas cercanas.',
+    },
+    {
+      value: 'WhatsApp + Llamada',
+      label: 'Canales de contacto',
+      detail: 'Contacto directo para prediagnostico, presupuesto y coordinacion de visita.',
+    },
+  ],
+  trustBadges: [
+    {
+      title: 'Tecnico matriculado',
+      detail: 'Trabajo formal con criterios de seguridad y diagnostico profesional.',
+    },
+    {
+      title: 'Presupuesto antes de intervenir',
+      detail: 'El cliente aprueba alcance y costo previo a cualquier reparacion.',
+    },
+    {
+      title: 'Factura y medios de pago',
+      detail: 'Operacion clara para clientes particulares, comercios y flotas.',
+    },
+    {
+      title: 'Garantia segun trabajo',
+      detail: 'Condiciones de garantia definidas por tipo de equipo y reparacion.',
+    },
   ],
   processSteps: [
     {
@@ -233,23 +281,26 @@ export const amrContent: LandingContent = {
       name: 'Cliente residencial',
       quote: 'Resolvio el problema de la heladera en el mismo dia y explico todo claro.',
       area: 'Maipu',
+      service: 'Heladeras',
     },
     {
       name: 'Comercio local',
       quote: 'Muy buena atencion y seguimiento. Quedo funcionando como corresponde.',
       area: 'Godoy Cruz',
+      service: 'Refrigeracion comercial',
     },
     {
       name: 'Cliente automotriz',
       quote: 'Revisaron el aire del auto, me explicaron la falla y lo dejaron funcionando.',
       area: 'Guaymallen',
+      service: 'Aire automotor',
     },
   ],
   faq: [
     {
       question: 'Cuanto tarda la respuesta inicial por WhatsApp?',
       answer:
-        'La primera respuesta se gestiona por WhatsApp en el menor tiempo posible segun demanda y horario.',
+        'La respuesta inicial se gestiona en el menor tiempo posible segun demanda y horario operativo.',
     },
     {
       question: 'Atienden urgencias?',
@@ -259,12 +310,22 @@ export const amrContent: LandingContent = {
     {
       question: 'Se informa presupuesto antes de reparar?',
       answer:
-        'Si. Luego del diagnostico se informa costo estimado y alcance del trabajo para aprobacion previa.',
+        'Si. Luego del diagnostico se informa costo estimado, alcance tecnico y condiciones para aprobacion previa.',
     },
     {
       question: 'Ofrecen garantia?',
       answer:
-        'Si, la garantia se define segun tipo de trabajo y estado previo del equipo.',
+        'Si. La garantia se define segun tipo de trabajo realizado, repuesto aplicado y estado previo del equipo.',
+    },
+    {
+      question: 'Cuando se inicia el trabajo?',
+      answer:
+        'El trabajo se inicia una vez aprobado el presupuesto y el alcance de la intervencion por parte del cliente.',
+    },
+    {
+      question: 'Trabajan con factura y medios de pago?',
+      answer:
+        'Si. Se trabaja con factura y medios de pago, segun tipo de servicio y condiciones informadas al cliente.',
     },
     {
       question: 'Que informacion conviene enviar para agilizar?',

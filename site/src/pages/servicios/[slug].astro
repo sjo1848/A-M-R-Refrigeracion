@@ -1,15 +1,14 @@
 ---
-// src/pages/servicios/[slug].astro
 import { Image } from 'astro:assets';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Header from '../../components/sections/Header.astro';
 import Footer from '../../components/sections/Footer.astro';
 import FloatingWhatsapp from '../../components/sections/FloatingWhatsapp.astro';
+import MobileActionBar from '../../components/sections/MobileActionBar.astro';
 import { amrContent } from '../../content/amr';
 import { buildTelUrl, buildWhatsAppUrl } from '../../utils/whatsapp';
 import { buildLocalBusinessSchema } from '../../utils/seo';
 
-// Generar rutas dinámicas para cada servicio
 export async function getStaticPaths() {
   return amrContent.servicesDetails.map((service) => ({
     params: { slug: service.slug },
@@ -37,8 +36,6 @@ const whatsappServiceUrl = buildWhatsAppUrl(
 
 const siteUrl = import.meta.env.PUBLIC_SITE_URL;
 const canonical = siteUrl ? new URL(Astro.url.pathname, siteUrl).toString() : Astro.url.toString();
-
-// Configuración de Schema enriquecido para el servicio específico
 const schema = buildLocalBusinessSchema(amrContent, new URL(canonical), whatsappBaseUrl);
 
 const localImages = import.meta.glob<{ default: ImageMetadata }>('../../assets/gallery/*.{jpeg,jpg,png,gif,webp}', {
@@ -69,26 +66,26 @@ const serviceImage = resolveLocalImage(service.relatedGalleryImages[0]);
     phoneUrl={phoneUrl}
     callLabel={amrContent.cta.callLabel}
   />
-  
-  <main class="flex-grow pt-24 pb-16">
+
+  <main class="flex-grow pb-16 pt-24">
     <div class="container-shell">
-      <div class="max-w-3xl mx-auto text-center">
-        <p class="text-xs font-extrabold uppercase tracking-[0.16em] text-[var(--color-brand-soft)] mb-4">Servicio Técnico Especializado</p>
-        <h1 class="text-4xl md:text-5xl font-extrabold text-[var(--color-text)] tracking-tight text-pretty mb-6">
+      <div class="mx-auto max-w-3xl text-center">
+        <p class="mb-4 text-xs font-extrabold uppercase tracking-[0.16em] text-[var(--color-brand-soft)]">Servicio técnico especializado</p>
+        <h1 class="mb-6 text-4xl font-extrabold tracking-tight text-[var(--color-text)] text-pretty md:text-5xl">
           {service.title}
         </h1>
-        <p class="text-lg md:text-xl text-[var(--color-text-muted)] text-pretty leading-relaxed">
+        <p class="text-pretty text-lg leading-relaxed text-[var(--color-text-muted)] md:text-xl">
           {service.description}
         </p>
       </div>
 
-      <div class="mt-16 grid md:grid-cols-2 gap-12 items-center bg-[var(--color-surface)]/40 rounded-3xl p-8 md:p-12 border border-white/5">
+      <div class="mt-14 grid items-center gap-10 rounded-3xl border border-[var(--color-border)] bg-[var(--color-surface)] p-6 md:grid-cols-2 md:p-10">
         <div>
-          <h2 class="text-2xl font-bold text-[var(--color-text)] mb-6">¿Qué incluye nuestro servicio?</h2>
+          <h2 class="mb-6 text-2xl font-bold text-[var(--color-text)]">¿Qué incluye nuestro servicio?</h2>
           <ul class="space-y-4">
             {service.features.map((feature: string) => (
               <li class="flex items-start gap-3 text-[var(--color-text-muted)]">
-                <span class="mt-1 shrink-0 p-1 rounded-full bg-[var(--color-whatsapp)]/20 text-[var(--color-whatsapp)]">
+                <span class="mt-1 shrink-0 rounded-full bg-[var(--color-whatsapp)]/18 p-1 text-[var(--color-whatsapp)]">
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="size-4">
                     <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
                   </svg>
@@ -97,51 +94,45 @@ const serviceImage = resolveLocalImage(service.relatedGalleryImages[0]);
               </li>
             ))}
           </ul>
-          
+
           <div class="mt-10">
             <a
               href={whatsappServiceUrl}
               target="_blank"
               rel="noreferrer"
-              class="inline-flex items-center gap-2 rounded-xl bg-[var(--color-whatsapp)] px-8 py-4 text-base font-extrabold text-white transition hover:bg-[var(--color-whatsapp-hover)] hover:-translate-y-1 shadow-lg shadow-[var(--color-whatsapp)]/20"
+              class="inline-flex items-center gap-2 rounded-xl bg-[var(--color-whatsapp)] px-8 py-4 text-base font-extrabold text-white transition hover:bg-[var(--color-whatsapp-hover)]"
             >
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="size-6">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M12 20.25c4.97 0 9-3.694 9-8.25s-4.03-8.25-9-8.25S3 7.436 3 12c0 1.605.498 3.093 1.348 4.31l-1.373 3.513a.563.563 0 0 0 .717.717l3.513-1.373A8.932 8.932 0 0 0 12 20.252Zm0-13.5c4.142 0 7.5 3.023 7.5 6.75s-3.358 6.75-7.5 6.75A7.47 7.47 0 0 1 6.55 19.3l-2.036.796.796-2.036A7.47 7.47 0 0 1 4.5 12c0-3.727 3.358-6.75 7.5-6.759Z" />
               </svg>
-              Solicitar Presupuesto
+              Solicitar presupuesto
             </a>
           </div>
         </div>
-        
-        <div class="relative w-full aspect-square md:aspect-auto md:h-full rounded-2xl overflow-hidden shadow-2xl border border-white/10">
-            {serviceImage ? (
-              <Image
-                src={serviceImage}
-                alt={`Técnico trabajando en ${service.title.toLowerCase()}`}
-                width={1200}
-                class="w-full h-full object-cover"
-              />
-            ) : (
-              <img
-                src="/images/placeholder-work.svg"
-                alt={`Técnico trabajando en ${service.title.toLowerCase()}`}
-                class="w-full h-full object-cover"
-              />
-            )}
-            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
-            <div class="absolute bottom-6 left-6 right-6 flex items-center gap-3">
-              <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white text-black">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
-                   <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm11.378-3.917c-.89-.777-2.366-.149-2.366 1.041v5.752c0 1.19 1.476 1.818 2.366 1.041l4.536-3.951a1.5 1.5 0 0 0 0-2.264l-4.536-3.951Z" clip-rule="evenodd" />
-                </svg>
-              </span>
-              <p class="text-white font-semibold text-sm">Respuesta en breve por WhatsApp</p>
-            </div>
+
+        <div class="relative aspect-square w-full overflow-hidden rounded-2xl border border-[var(--color-border)] md:aspect-auto md:h-full">
+          {serviceImage ? (
+            <Image
+              src={serviceImage}
+              alt={`Técnico trabajando en ${service.title.toLowerCase()}`}
+              width={1200}
+              class="h-full w-full object-cover"
+            />
+          ) : (
+            <img
+              src="/images/placeholder-work.svg"
+              alt={`Técnico trabajando en ${service.title.toLowerCase()}`}
+              class="h-full w-full object-cover"
+            />
+          )}
+          <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent p-5">
+            <p class="text-sm font-semibold text-white">Atención técnica con respuesta por WhatsApp</p>
+          </div>
         </div>
       </div>
     </div>
   </main>
-  
+
   <Footer
     brandName={amrContent.brand.name}
     businessLabel={amrContent.footer.businessLabel}
@@ -149,6 +140,14 @@ const serviceImage = resolveLocalImage(service.relatedGalleryImages[0]);
     phoneUrl={phoneUrl}
     addressReference={amrContent.footer.addressReference}
     coverageLabel={amrContent.footer.coverageLabel}
+    serviceConditions={amrContent.legal.serviceConditions}
+    commercialNotice={amrContent.legal.commercialNotice}
   />
   <FloatingWhatsapp whatsappUrl={whatsappServiceUrl} />
+  <MobileActionBar
+    whatsappUrl={whatsappServiceUrl}
+    phoneUrl={phoneUrl}
+    whatsappLabel="Consultar"
+    callLabel={amrContent.cta.callLabel}
+  />
 </BaseLayout>

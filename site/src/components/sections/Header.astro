@@ -9,20 +9,30 @@ interface Props {
 const { brandName, whatsappUrl, phoneUrl, callLabel } = Astro.props;
 ---
 
-<header id="main-header" class="fixed w-full top-0 z-50 border-b border-black/5 dark:border-white/10 bg-[var(--color-bg)]/95 backdrop-blur transition-all duration-300">
-  <div id="header-container" class="container-shell flex items-center justify-between py-4 transition-all duration-300">
-    <a href="/" class="text-sm font-extrabold uppercase tracking-[0.12em] text-[var(--color-text)] hover:text-[var(--color-brand-soft)] transition-colors">{brandName}</a>
-    <nav class="hidden gap-5 text-sm font-semibold text-[var(--color-text-muted)] md:flex">
-      <a href="#servicios" class="hover:text-[var(--color-brand-soft)]">Servicios</a>
-      <a href="#proceso" class="hover:text-[var(--color-brand-soft)]">Proceso</a>
-      <a href="#especialidades" class="hover:text-[var(--color-brand-soft)]">Especialidades</a>
-      <a href="#zonas" class="hover:text-[var(--color-brand-soft)]">Zonas</a>
-      <a href="#faq" class="hover:text-[var(--color-brand-soft)]">FAQ</a>
+<header class="fixed top-0 z-50 w-full border-b border-[var(--color-border)] bg-[var(--color-bg)]/94 backdrop-blur">
+  <div class="container-shell flex items-center justify-between gap-4 py-3">
+    <a href="/" class="group">
+      <p class="text-sm font-extrabold uppercase tracking-[0.12em] text-[var(--color-text)] transition-colors group-hover:text-[var(--color-brand-soft)]">
+        {brandName}
+      </p>
+      <p class="hidden text-[11px] font-semibold uppercase tracking-[0.1em] text-[var(--color-text-muted)] md:block">
+        Refrigeracion profesional en Mendoza
+      </p>
+    </a>
+
+    <nav class="hidden items-center gap-5 text-sm font-semibold text-[var(--color-text-muted)] md:flex">
+      <a href="#servicios" class="transition-colors hover:text-[var(--color-brand-soft)]">Servicios</a>
+      <a href="#credenciales" class="transition-colors hover:text-[var(--color-brand-soft)]">Credenciales</a>
+      <a href="#proceso" class="transition-colors hover:text-[var(--color-brand-soft)]">Proceso</a>
+      <a href="#especialidades" class="transition-colors hover:text-[var(--color-brand-soft)]">Especialidades</a>
+      <a href="#zonas" class="transition-colors hover:text-[var(--color-brand-soft)]">Zonas</a>
+      <a href="#faq" class="transition-colors hover:text-[var(--color-brand-soft)]">FAQ</a>
     </nav>
+
     <div class="flex items-center gap-2">
       <a
         href={phoneUrl}
-        class="rounded-lg border border-white/20 px-3 py-2 text-xs font-bold text-[var(--color-text)] transition hover:border-[var(--color-brand-soft)] hover:text-[var(--color-brand-soft)] md:text-sm"
+        class="inline-flex items-center justify-center rounded-lg border border-[var(--color-border)] bg-[var(--color-surface)] px-3 py-2 text-xs font-bold text-[var(--color-text)] transition-colors hover:border-[var(--color-brand-soft)] hover:text-[var(--color-brand-soft)] md:text-sm"
       >
         {callLabel}
       </a>
@@ -37,28 +47,3 @@ const { brandName, whatsappUrl, phoneUrl, callLabel } = Astro.props;
     </div>
   </div>
 </header>
-
-<script>
-  const header = document.getElementById('main-header');
-  const container = document.getElementById('header-container');
-
-  if (header && container) {
-    const handleScroll = () => {
-      if (window.scrollY > 50) {
-        header.classList.add('shadow-xl', 'shadow-black/10', 'dark:shadow-black/50', 'bg-[var(--color-bg)]/100', 'border-b-[var(--color-brand-soft)]/20');
-        header.classList.remove('bg-[var(--color-bg)]/95', 'border-black/5', 'dark:border-white/10');
-        container.classList.remove('py-4');
-        container.classList.add('py-2');
-      } else {
-        header.classList.remove('shadow-xl', 'shadow-black/10', 'dark:shadow-black/50', 'bg-[var(--color-bg)]/100', 'border-b-[var(--color-brand-soft)]/20');
-        header.classList.add('bg-[var(--color-bg)]/95', 'border-black/5', 'dark:border-white/10');
-        container.classList.remove('py-2');
-        container.classList.add('py-4');
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    // Trigger on load in case the user refreshes mid-page
-    handleScroll();
-  }
-</script>

@@ -14,7 +14,6 @@ export interface ServiceDetail {
   relatedGalleryImages: string[];
 }
 
-
 export interface WhyChoosePoint {
   title: string;
   description: string;
@@ -40,6 +39,18 @@ export interface Testimonial {
   name: string;
   quote: string;
   area: string;
+  service?: string;
+}
+
+export interface ProofMetric {
+  value: string;
+  label: string;
+  detail: string;
+}
+
+export interface TrustBadge {
+  title: string;
+  detail: string;
 }
 
 export interface FaqItem {
@@ -70,9 +81,13 @@ export interface LandingContent {
   legal: {
     urgency: string;
     warranty: string;
+    serviceConditions: string[];
+    commercialNotice: string;
   };
   heroChecks: string[];
   trustPoints: string[];
+  proofMetrics: ProofMetric[];
+  trustBadges: TrustBadge[];
   processSteps: ProcessStep[];
   serviceCategories: ServiceCategory[];
   servicesDetails: ServiceDetail[];

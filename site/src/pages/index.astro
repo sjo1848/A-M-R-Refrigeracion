@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/sections/Header.astro';
 import Hero from '../components/sections/Hero.astro';
 import TrustBar from '../components/sections/TrustBar.astro';
+import BusinessProof from '../components/sections/BusinessProof.astro';
 import ProcessFlow from '../components/sections/ProcessFlow.astro';
 import Services from '../components/sections/Services.astro';
 import TechnicalScope from '../components/sections/TechnicalScope.astro';
@@ -14,6 +15,7 @@ import Testimonials from '../components/sections/Testimonials.astro';
 import FinalCta from '../components/sections/FinalCta.astro';
 import Footer from '../components/sections/Footer.astro';
 import FloatingWhatsapp from '../components/sections/FloatingWhatsapp.astro';
+import MobileActionBar from '../components/sections/MobileActionBar.astro';
 import { amrContent } from '../content/amr';
 import { buildTelUrl, buildWhatsAppUrl } from '../utils/whatsapp';
 import { buildLocalBusinessSchema } from '../utils/seo';
@@ -48,6 +50,9 @@ const whatsappFloatingUrl = buildWhatsAppUrl(
   amrContent.cta.whatsappMessage,
   'flotante',
 );
+const topSellingService =
+  amrContent.servicesDetails.find((service) => service.slug === 'aire-acondicionado-automotor-mendoza') ??
+  amrContent.servicesDetails[0];
 const siteUrl = import.meta.env.PUBLIC_SITE_URL;
 const canonical = siteUrl ? new URL('/', siteUrl).toString() : Astro.url.toString();
 const schema = buildLocalBusinessSchema(amrContent, new URL(canonical), whatsappBaseUrl);
@@ -76,15 +81,19 @@ const schema = buildLocalBusinessSchema(amrContent, new URL(canonical), whatsapp
     checks={amrContent.heroChecks}
     whatsappUrl={whatsappHeroUrl}
     ctaLabel={amrContent.cta.primaryLabel}
+    topServiceLabel={`Servicio mas solicitado: ${topSellingService.title}`}
+    topServiceHref={`/servicios/${topSellingService.slug}`}
+    commercialNotice={amrContent.legal.commercialNotice}
   />
   <TrustBar points={amrContent.trustPoints} />
+  <BusinessProof metrics={amrContent.proofMetrics} badges={amrContent.trustBadges} />
   <ProcessFlow steps={amrContent.processSteps} />
   <Services
     services={amrContent.servicesDetails}
     whatsappUrl={whatsappServicesUrl}
     ctaLabel={amrContent.cta.servicesLabel}
   />
-  <TechnicalScope items={amrContent.technicalScope} />
+  <TechnicalScope items={amrContent.technicalScope} whatsappUrl={whatsappServicesUrl} />
   <WhyChooseUs points={amrContent.whyChoosePoints} />
   <Zones zones={amrContent.zones} coverageText={amrContent.zonesCoverageText} />
   <Gallery images={amrContent.gallery} />
@@ -97,6 +106,8 @@ const schema = buildLocalBusinessSchema(amrContent, new URL(canonical), whatsapp
     callLabel={amrContent.cta.callLabel}
     urgencyLabel={amrContent.legal.urgency}
     warrantyLabel={amrContent.legal.warranty}
+    topServiceLabel={topSellingService.title}
+    serviceConditions={amrContent.legal.serviceConditions}
   />
   <Footer
     brandName={amrContent.brand.name}
@@ -105,6 +116,14 @@ const schema = buildLocalBusinessSchema(amrContent, new URL(canonical), whatsapp
     phoneUrl={phoneUrl}
     addressReference={amrContent.footer.addressReference}
     coverageLabel={amrContent.footer.coverageLabel}
+    serviceConditions={amrContent.legal.serviceConditions}
+    commercialNotice={amrContent.legal.commercialNotice}
   />
   <FloatingWhatsapp whatsappUrl={whatsappFloatingUrl} />
+  <MobileActionBar
+    whatsappUrl={whatsappFloatingUrl}
+    phoneUrl={phoneUrl}
+    whatsappLabel="WhatsApp ahora"
+    callLabel={amrContent.cta.callLabel}
+  />
 </BaseLayout>
