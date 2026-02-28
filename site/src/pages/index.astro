@@ -3,11 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/sections/Header.astro';
 import Hero from '../components/sections/Hero.astro';
 import TrustBar from '../components/sections/TrustBar.astro';
-import BusinessProof from '../components/sections/BusinessProof.astro';
-import ProcessFlow from '../components/sections/ProcessFlow.astro';
 import Services from '../components/sections/Services.astro';
-import TechnicalScope from '../components/sections/TechnicalScope.astro';
-import WhyChooseUs from '../components/sections/WhyChooseUs.astro';
 import Zones from '../components/sections/Zones.astro';
 import Gallery from '../components/sections/Gallery.astro';
 import Faq from '../components/sections/Faq.astro';
@@ -16,6 +12,8 @@ import FinalCta from '../components/sections/FinalCta.astro';
 import Footer from '../components/sections/Footer.astro';
 import FloatingWhatsapp from '../components/sections/FloatingWhatsapp.astro';
 import MobileActionBar from '../components/sections/MobileActionBar.astro';
+import heroBg from '../assets/gallery/amr-04.jpg';
+import finalCtaBg from '../assets/gallery/amr-03.jpg';
 import { amrContent } from '../content/amr';
 import { buildTelUrl, buildWhatsAppUrl } from '../utils/whatsapp';
 import { buildLocalBusinessSchema } from '../utils/seo';
@@ -80,25 +78,31 @@ const schema = buildLocalBusinessSchema(amrContent, new URL(canonical), whatsapp
     responseTimeLabel={amrContent.contact.responseTimeLabel}
     checks={amrContent.heroChecks}
     whatsappUrl={whatsappHeroUrl}
+    phoneUrl={phoneUrl}
     ctaLabel={amrContent.cta.primaryLabel}
+    callLabel={amrContent.cta.callLabel}
+    mobileSubtitle="Tecnico matriculado. Diagnostico y presupuesto por WhatsApp."
     topServiceLabel={`Servicio mas solicitado: ${topSellingService.title}`}
     topServiceHref={`/servicios/${topSellingService.slug}`}
     commercialNotice={amrContent.legal.commercialNotice}
+    backgroundImage={heroBg}
   />
-  <TrustBar points={amrContent.trustPoints} />
-  <BusinessProof metrics={amrContent.proofMetrics} badges={amrContent.trustBadges} />
-  <ProcessFlow steps={amrContent.processSteps} />
+  <Gallery images={amrContent.gallery} />
   <Services
     services={amrContent.servicesDetails}
     whatsappUrl={whatsappServicesUrl}
     ctaLabel={amrContent.cta.servicesLabel}
   />
-  <TechnicalScope items={amrContent.technicalScope} whatsappUrl={whatsappServicesUrl} />
-  <WhyChooseUs points={amrContent.whyChoosePoints} />
-  <Zones zones={amrContent.zones} coverageText={amrContent.zonesCoverageText} />
-  <Gallery images={amrContent.gallery} />
-  <Faq items={amrContent.faq} />
+  <TrustBar
+    points={amrContent.trustPoints}
+    metrics={amrContent.proofMetrics}
+    badges={amrContent.trustBadges}
+    whatsappUrl={whatsappServicesUrl}
+    ctaLabel="Pedir presupuesto por WhatsApp"
+  />
   <Testimonials testimonials={amrContent.testimonials} />
+  <Zones zones={amrContent.zones} coverageText={amrContent.zonesCoverageText} />
+  <Faq items={amrContent.faq} />
   <FinalCta
     whatsappUrl={whatsappFinalUrl}
     phoneUrl={phoneUrl}
@@ -108,6 +112,7 @@ const schema = buildLocalBusinessSchema(amrContent, new URL(canonical), whatsapp
     warrantyLabel={amrContent.legal.warranty}
     topServiceLabel={topSellingService.title}
     serviceConditions={amrContent.legal.serviceConditions}
+    backgroundImage={finalCtaBg}
   />
   <Footer
     brandName={amrContent.brand.name}
@@ -123,7 +128,7 @@ const schema = buildLocalBusinessSchema(amrContent, new URL(canonical), whatsapp
   <MobileActionBar
     whatsappUrl={whatsappFloatingUrl}
     phoneUrl={phoneUrl}
-    whatsappLabel="WhatsApp ahora"
+    whatsappLabel="Pedir presupuesto"
     callLabel={amrContent.cta.callLabel}
   />
 </BaseLayout>

@@ -95,6 +95,23 @@ const serviceImage = resolveLocalImage(service.relatedGalleryImages[0]);
             ))}
           </ul>
 
+          <div class="mt-7 rounded-xl border border-[var(--color-border)] bg-[var(--color-surface-soft)] p-4">
+            <p class="text-[11px] font-bold uppercase tracking-[0.12em] text-[var(--color-brand-soft)]">Caso real resuelto</p>
+            <div class="mt-3 space-y-2 text-sm text-[var(--color-text)]">
+              <p><span class="font-bold">Falla:</span> {service.caseStudy.problem}</p>
+              <p><span class="font-bold">Solucion:</span> {service.caseStudy.solution}</p>
+              <p><span class="font-bold">Resultado:</span> {service.caseStudy.result}</p>
+            </div>
+            <div class="mt-3 flex flex-wrap gap-2">
+              <span class="rounded-md border border-[var(--color-border)] bg-[var(--color-surface)] px-2.5 py-1 text-[11px] font-bold uppercase tracking-[0.06em] text-[var(--color-text)]">
+                Tecnico matriculado
+              </span>
+              <span class="rounded-md border border-[var(--color-border)] bg-[var(--color-surface)] px-2.5 py-1 text-[11px] font-bold uppercase tracking-[0.06em] text-[var(--color-text)]">
+                Garantia segun trabajo
+              </span>
+            </div>
+          </div>
+
           <div class="mt-10">
             <a
               href={whatsappServiceUrl}
@@ -105,7 +122,7 @@ const serviceImage = resolveLocalImage(service.relatedGalleryImages[0]);
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="size-6">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M12 20.25c4.97 0 9-3.694 9-8.25s-4.03-8.25-9-8.25S3 7.436 3 12c0 1.605.498 3.093 1.348 4.31l-1.373 3.513a.563.563 0 0 0 .717.717l3.513-1.373A8.932 8.932 0 0 0 12 20.252Zm0-13.5c4.142 0 7.5 3.023 7.5 6.75s-3.358 6.75-7.5 6.75A7.47 7.47 0 0 1 6.55 19.3l-2.036.796.796-2.036A7.47 7.47 0 0 1 4.5 12c0-3.727 3.358-6.75 7.5-6.759Z" />
               </svg>
-              Solicitar presupuesto
+              Pedir presupuesto por WhatsApp
             </a>
           </div>
         </div>
@@ -147,7 +164,7 @@ const serviceImage = resolveLocalImage(service.relatedGalleryImages[0]);
   <MobileActionBar
     whatsappUrl={whatsappServiceUrl}
     phoneUrl={phoneUrl}
-    whatsappLabel="Consultar"
+    whatsappLabel="Pedir presupuesto"
     callLabel={amrContent.cta.callLabel}
   />
 </BaseLayout>

@@ -19,8 +19,8 @@ const secondaryServices = services.filter((service) => service.slug !== featured
   <div class="container-shell">
     <SectionTitle
       eyebrow="Servicios"
-      title="Soluciones en refrigeracion para hogar, comercio y automotor"
-      description="Priorizado para resolver rapido y evitar perdida de tiempo en diagnosticos confusos."
+      title="Servicios que mas se piden en Mendoza"
+      description="Elegi el servicio y escribi por WhatsApp."
     />
 
     <article class="animate-on-scroll panel mb-6 overflow-hidden p-6 md:p-8">
@@ -28,9 +28,9 @@ const secondaryServices = services.filter((service) => service.slug !== featured
       <div class="mt-3 grid gap-6 md:grid-cols-[1.1fr_0.9fr] md:items-center">
         <div>
           <h3 class="text-3xl font-extrabold leading-[1] text-[var(--color-text)] md:text-4xl">{featuredService.title}</h3>
-          <p class="mt-3 text-[var(--color-text-muted)]">{featuredService.description}</p>
+          <p class="mt-3 line-clamp-2 text-[var(--color-text-muted)]">{featuredService.description}</p>
           <ul class="mt-4 grid gap-2 text-sm text-[var(--color-text-muted)] sm:grid-cols-2">
-            {featuredService.features.slice(0, 4).map((feature: string) => (
+            {featuredService.features.slice(0, 3).map((feature: string) => (
               <li class="flex items-start gap-2 rounded-lg border border-[var(--color-border)] bg-[var(--color-surface-soft)]/70 px-3 py-2">
                 <span class="mt-1 inline-block h-2 w-2 rounded-full bg-[var(--color-brand-soft)]"></span>
                 <span>{feature}</span>
@@ -52,7 +52,7 @@ const secondaryServices = services.filter((service) => service.slug !== featured
             rel="noreferrer"
             class="inline-flex items-center justify-center gap-2 rounded-xl border border-[var(--color-border)] bg-[var(--color-surface-soft)] px-6 py-3 text-sm font-bold text-[var(--color-text)] transition hover:border-[var(--color-brand-soft)]"
           >
-            Consultar por WhatsApp
+            Pedir presupuesto por WhatsApp
           </a>
         </div>
       </div>
@@ -69,7 +69,7 @@ const secondaryServices = services.filter((service) => service.slug !== featured
         >
           <h3 class="text-2xl font-extrabold leading-[1.05] text-[var(--color-text)]">{service.title}</h3>
           <ul class="mt-4 space-y-2 text-sm text-[var(--color-text-muted)]">
-            {service.features.slice(0, 4).map((feature: string) => (
+            {service.features.slice(0, 3).map((feature: string) => (
               <li class="flex gap-2">
                 <span class="mt-1 inline-block h-2 w-2 rounded-full bg-[var(--color-brand-soft)]"></span>
                 <span class="line-clamp-1">{feature}</span>

@@ -48,7 +48,7 @@ const {
       <div>
         <p class="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--color-brand-soft)]">Condiciones de servicio</p>
         <ul class="mt-2 space-y-1.5 text-xs leading-relaxed text-[var(--color-text-muted)]">
-          {serviceConditions.map((condition) => (
+          {serviceConditions.slice(0, 2).map((condition) => (
             <li class="flex items-start gap-2">
               <span class="mt-1 inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--color-brand-soft)]"></span>
               <span>{condition}</span>

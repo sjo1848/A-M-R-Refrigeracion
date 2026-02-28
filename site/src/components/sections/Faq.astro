@@ -14,10 +14,10 @@ const { items } = Astro.props;
     <SectionTitle
       eyebrow="Preguntas frecuentes"
       title="Respuestas rápidas antes de contactarte"
-      description="Resolvemos dudas técnicas, comerciales y de garantía para que el proceso sea ágil y transparente."
+      description="Lo justo antes de contactarte."
     />
     <div class="mx-auto max-w-3xl space-y-4">
-      {items.map((item, index) => (
+      {items.slice(0, 4).map((item, index) => (
         <details class="group rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] transition-colors open:border-[var(--color-brand-soft)]/40" open={index === 0}>
           <summary class="flex cursor-pointer list-none items-center justify-between p-6 text-base font-bold text-[var(--color-text)] select-none">
             <span class="pr-6">{item.question}</span>

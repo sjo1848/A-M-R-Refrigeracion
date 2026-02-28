@@ -4,35 +4,34 @@ export const amrContent: LandingContent = {
   brand: {
     name: 'A.M.R Refrigeracion',
     h1: 'Servicio Tecnico Profesional de Refrigeracion en Mendoza',
-    descriptor: 'Domiciliaria • Comercial • Automotriz • Urgencias',
+    descriptor: 'Hogar • Comercio • Aire Automotor',
     subtitle:
-      'Tecnico matriculado con cobertura en Gran Mendoza. Diagnostico claro, presupuesto previo y trabajo ejecutado con trazabilidad tecnica.',
+      'Tecnico matriculado. Diagnostico y presupuesto por WhatsApp.',
     locationLabel: 'Luzuriaga, Maipu - cobertura en Gran Mendoza',
   },
   contact: {
     whatsapp: '2616956104',
     phoneLabel: '261 695-6104',
-    responseTimeLabel: 'Respuesta rapida por WhatsApp',
+    responseTimeLabel: 'Respuesta por WhatsApp',
   },
   cta: {
     whatsappMessage:
-      'Hola, necesito servicio tecnico de refrigeracion.\nEstoy en [zona].\nEl equipo es: [heladera / lavarropas / aire / automotor].\nEl problema es: [detalle].\nPodes indicarme disponibilidad?',
-    primaryLabel: 'Solicitar diagnostico por WhatsApp',
+      'Hola, necesito servicio tecnico.\nEstoy en [zona].\nEquipo: [tipo].\nFalla: [detalle].',
+    primaryLabel: 'Pedir presupuesto por WhatsApp',
     servicesLabel: 'Pedir presupuesto por WhatsApp',
-    finalLabel: 'Hablar con soporte tecnico por WhatsApp',
+    finalLabel: 'Pedir presupuesto por WhatsApp',
     callLabel: 'Llamar ahora',
   },
   legal: {
     urgency: 'Urgencias segun disponibilidad.',
     warranty: 'Garantia segun tipo de trabajo.',
     serviceConditions: [
-      'Toda intervencion se realiza con diagnostico previo y aprobacion del cliente.',
-      'El presupuesto informado corresponde al alcance tecnico validado en la revision.',
-      'Tiempos de visita y entrega sujetos a agenda, zona y disponibilidad de repuestos.',
-      'La garantia aplica segun tipo de reparacion y estado inicial del equipo.',
+      'Trabajo solo con diagnostico y aprobacion previa.',
+      'Visitas y tiempos sujetos a agenda, zona y repuestos.',
+      'Garantia segun reparacion y estado del equipo.',
     ],
     commercialNotice:
-      'Condiciones comerciales y tecnicas informadas y aprobadas antes de iniciar cada trabajo.',
+      'Condiciones claras antes de iniciar.',
   },
   heroChecks: [
     'Tecnico matriculado',
@@ -42,49 +41,47 @@ export const amrContent: LandingContent = {
   trustPoints: [
     'Tecnico matriculado',
     'Presupuesto claro antes de trabajar',
-    'Cobertura real en Gran Mendoza',
-    'Urgencias segun disponibilidad de agenda',
+    'Cobertura en Gran Mendoza',
     'Factura y medios de pago',
-    'Respuesta rapida por WhatsApp y llamada',
   ],
   proofMetrics: [
     {
       value: '12+',
       label: 'Anios de trabajo tecnico',
-      detail: 'Experiencia sostenida en refrigeracion domiciliaria, comercial y automotriz.',
+      detail: 'Experiencia real en refrigeracion.',
     },
     {
       value: '3',
       label: 'Lineas de servicio activas',
-      detail: 'Atencion residencial, comercial y automotor con enfoque tecnico especifico.',
+      detail: 'Residencial, comercial y automotor.',
     },
     {
       value: 'Gran Mendoza',
       label: 'Cobertura operativa',
-      detail: 'Maipu, Capital, Guaymallen, Godoy Cruz, Lujan de Cuyo y zonas cercanas.',
+      detail: 'Maipu y zonas cercanas.',
     },
     {
       value: 'WhatsApp + Llamada',
       label: 'Canales de contacto',
-      detail: 'Contacto directo para prediagnostico, presupuesto y coordinacion de visita.',
+      detail: 'Contacto directo.',
     },
   ],
   trustBadges: [
     {
       title: 'Tecnico matriculado',
-      detail: 'Trabajo formal con criterios de seguridad y diagnostico profesional.',
+      detail: 'Trabajo formal y profesional.',
     },
     {
       title: 'Presupuesto antes de intervenir',
-      detail: 'El cliente aprueba alcance y costo previo a cualquier reparacion.',
+      detail: 'Aprobacion previa del cliente.',
     },
     {
       title: 'Factura y medios de pago',
-      detail: 'Operacion clara para clientes particulares, comercios y flotas.',
+      detail: 'Operacion formal.',
     },
     {
       title: 'Garantia segun trabajo',
-      detail: 'Condiciones de garantia definidas por tipo de equipo y reparacion.',
+      detail: 'Garantia por tipo de reparacion.',
     },
   ],
   processSteps: [
@@ -92,25 +89,25 @@ export const amrContent: LandingContent = {
       step: 'Paso 1',
       title: 'Contacto y prediagnostico',
       description:
-        'El cliente envia zona, tipo de equipo y falla por WhatsApp para clasificar urgencia y definir visita.',
+        'Envias zona y falla por WhatsApp.',
     },
     {
       step: 'Paso 2',
       title: 'Visita tecnica',
       description:
-        'Se revisa el equipo en domicilio o comercio, validando estado general y causa probable de la falla.',
+        'Revisamos el equipo y causa de la falla.',
     },
     {
       step: 'Paso 3',
       title: 'Presupuesto y aprobacion',
       description:
-        'Se informa costo estimado, alcance y tiempos. El trabajo se inicia solo con aprobacion del cliente.',
+        'Informamos costo y alcance para aprobar.',
     },
     {
       step: 'Paso 4',
       title: 'Reparacion y garantia',
       description:
-        'Se ejecuta la solucion acordada, se prueban resultados y se informa la garantia segun tipo de trabajo.',
+        'Reparamos, probamos y cerramos con garantia.',
     },
   ],
   serviceCategories: [
@@ -151,7 +148,7 @@ export const amrContent: LandingContent = {
       title: 'Reparacion de Heladeras en Mendoza',
       seoTitle: 'Servicio Tecnico de Heladeras en Mendoza | A.M.R Refrigeracion',
       seoDescription: 'Reparacion de heladeras familiares y comerciales a domicilio en el Gran Mendoza. Diagnostico claro y profesional.',
-      description: 'Ofrecemos un servicio integral para la reparacion de todo tipo de heladeras (familiares, no frost, comerciales). Identificamos rapidamente fallas comunes como falta de frio, perdidas de gas, o fallas en el motor compresor.',
+      description: 'Reparacion de heladeras familiares y comerciales con diagnostico claro.',
       features: [
         'Reparacion de plaquetas electronicas',
         'Carga de gas refrigerante',
@@ -160,14 +157,19 @@ export const amrContent: LandingContent = {
       ],
       relatedGalleryImages: [
         'amr-01.jpg'
-      ]
+      ],
+      caseStudy: {
+        problem: 'Heladera sin frio y con ciclos inestables.',
+        solution: 'Diagnostico electrico y ajuste del circuito de refrigeracion.',
+        result: 'Recupero temperatura normal y funcionamiento estable.',
+      },
     },
     {
       slug: 'aire-acondicionado-automotor-mendoza',
       title: 'Aire Acondicionado Automotor en Mendoza',
       seoTitle: 'Aire Acondicionado Automotor en Mendoza | A.M.R',
       seoDescription: 'Carga de gas y reparacion de aire acondicionado automotriz en Mendoza. Atendemos autos particulares y flotas comerciales.',
-      description: 'Especialistas en climatizacion vehicular. Revisamos circuitos en busca de fugas, realizamos vacio, carga de gas ecologico y reparamos compresores para que tu vehiculo enfrie como el primer dia.',
+      description: 'Especialistas en aire automotor: fugas, carga de gas y reparacion.',
       features: [
         'Diagnostico de fugas con herramientas de precision',
         'Carga de gas refrigerante R134a',
@@ -177,14 +179,19 @@ export const amrContent: LandingContent = {
       relatedGalleryImages: [
         'amr-03.jpg',
         'amr-04.jpg'
-      ]
+      ],
+      caseStudy: {
+        problem: 'Aire automotor sin enfriamiento por fuga de gas.',
+        solution: 'Deteccion de fuga, vacio tecnico y recarga controlada.',
+        result: 'Sistema enfriando parejo con presiones dentro de rango.',
+      },
     },
     {
       slug: 'reparacion-lavarropas-mendoza',
       title: 'Reparacion de Lavarropas Automaticos',
       seoTitle: 'Reparacion de Lavarropas en Mendoza | Tecnico a Domicilio',
       seoDescription: 'Servicio tecnico capacitado de lavarropas automaticos en Mendoza. Solucionamos fallas de centrifugado, carga de agua y problemas electronicos.',
-      description: 'Reparacion de lavarropas automaticos de todas las marcas. Brindamos solucion a tambores trabados, bombas de desagote quemadas y plaquetas que no responden. Presupuesto directo al revisar la unidad.',
+      description: 'Reparacion de lavarropas automaticos con presupuesto en sitio.',
       features: [
         'Cambio de rulemanes y retenes',
         'Reparacion y sustitucion de bomba de desagote',
@@ -193,7 +200,12 @@ export const amrContent: LandingContent = {
       ],
       relatedGalleryImages: [
         'amr-02.jpg'
-      ]
+      ],
+      caseStudy: {
+        problem: 'Lavarropas sin desagote y corte durante el ciclo.',
+        solution: 'Revision de bomba y correccion del sistema de desagote.',
+        result: 'Ciclo completo restablecido y equipo operativo.',
+      },
     }
   ],
   technicalScope: [
@@ -203,7 +215,6 @@ export const amrContent: LandingContent = {
         'Enfria poco o no arranca',
         'Perdida de gas y carga refrigerante',
         'No frost con exceso de hielo',
-        'Fallas de termostato o sensores',
       ],
     },
     {
@@ -212,7 +223,6 @@ export const amrContent: LandingContent = {
         'Heladeras y exhibidoras comerciales',
         'Control de temperatura inestable',
         'Revision de compresor y ventilacion',
-        'Mantenimiento preventivo programado',
       ],
     },
     {
@@ -221,7 +231,6 @@ export const amrContent: LandingContent = {
         'Baja eficiencia de enfriamiento',
         'Carga y control de gas',
         'Revision de perdidas y presiones',
-        'Chequeo de calefaccion automotriz',
       ],
     },
   ],
@@ -240,11 +249,11 @@ export const amrContent: LandingContent = {
     },
     {
       title: 'Cobertura real',
-      description: 'Atencion en Maipu y Gran Mendoza coordinada por WhatsApp.',
+      description: 'Atencion en Maipu y Gran Mendoza.',
     },
     {
       title: 'Garantia condicionada',
-      description: 'Garantia segun tipo de trabajo y estado del equipo.',
+      description: 'Garantia segun trabajo realizado.',
     },
   ],
   zones: [
@@ -257,7 +266,7 @@ export const amrContent: LandingContent = {
     'Chacras de Coria',
   ],
   zonesCoverageText:
-    'Cobertura en Gran Mendoza con coordinacion por WhatsApp. Tiempos de visita sujetos a zona y disponibilidad.',
+    'Cobertura en Gran Mendoza. Visitas segun zona y agenda.',
   gallery: [
     {
       src: 'amr-01.jpg',
@@ -279,29 +288,24 @@ export const amrContent: LandingContent = {
   testimonials: [
     {
       name: 'Cliente residencial',
-      quote: 'Resolvio el problema de la heladera en el mismo dia y explico todo claro.',
+      quote: 'Me resolvio la heladera en el dia.',
       area: 'Maipu',
       service: 'Heladeras',
     },
     {
       name: 'Comercio local',
-      quote: 'Muy buena atencion y seguimiento. Quedo funcionando como corresponde.',
+      quote: 'Trabajo claro y buen seguimiento.',
       area: 'Godoy Cruz',
       service: 'Refrigeracion comercial',
     },
     {
       name: 'Cliente automotriz',
-      quote: 'Revisaron el aire del auto, me explicaron la falla y lo dejaron funcionando.',
+      quote: 'Revisaron el aire y quedo funcionando.',
       area: 'Guaymallen',
       service: 'Aire automotor',
     },
   ],
   faq: [
-    {
-      question: 'Cuanto tarda la respuesta inicial por WhatsApp?',
-      answer:
-        'La respuesta inicial se gestiona en el menor tiempo posible segun demanda y horario operativo.',
-    },
     {
       question: 'Atienden urgencias?',
       answer:
@@ -318,16 +322,6 @@ export const amrContent: LandingContent = {
         'Si. La garantia se define segun tipo de trabajo realizado, repuesto aplicado y estado previo del equipo.',
     },
     {
-      question: 'Cuando se inicia el trabajo?',
-      answer:
-        'El trabajo se inicia una vez aprobado el presupuesto y el alcance de la intervencion por parte del cliente.',
-    },
-    {
-      question: 'Trabajan con factura y medios de pago?',
-      answer:
-        'Si. Se trabaja con factura y medios de pago, segun tipo de servicio y condiciones informadas al cliente.',
-    },
-    {
       question: 'Que informacion conviene enviar para agilizar?',
       answer:
         'Zona, tipo de equipo, falla principal y fotos o video corto del problema para acelerar el prediagnostico.',
@@ -336,7 +330,7 @@ export const amrContent: LandingContent = {
   footer: {
     addressReference: 'Sarmiento y Juan V. Gonzalez, Luzuriaga, Maipu, Mendoza.',
     coverageLabel: 'Cobertura: Gran Mendoza y alrededores.',
-    businessLabel: 'Servicio tecnico de refrigeracion domiciliaria, comercial y automotriz.',
+    businessLabel: 'Servicio tecnico de refrigeracion en Mendoza.',
   },
   seo: {
     title: 'A.M.R Refrigeracion en Mendoza | Tecnico Matriculado',

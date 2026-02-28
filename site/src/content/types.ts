@@ -12,6 +12,11 @@ export interface ServiceDetail {
   description: string;
   features: string[];
   relatedGalleryImages: string[];
+  caseStudy: {
+    problem: string;
+    solution: string;
+    result: string;
+  };
 }
 
 export interface WhyChoosePoint {
