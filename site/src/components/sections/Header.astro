@@ -9,9 +9,9 @@ interface Props {
 const { brandName, whatsappUrl, phoneUrl, callLabel } = Astro.props;
 ---
 
-<header class="sticky top-0 z-40 border-b border-white/10 bg-[#0b0b0df2] backdrop-blur">
-  <div class="container-shell flex items-center justify-between py-3">
-    <p class="text-sm font-extrabold uppercase tracking-[0.12em] text-[var(--color-text)]">{brandName}</p>
+<header id="main-header" class="fixed w-full top-0 z-50 border-b border-black/5 dark:border-white/10 bg-[var(--color-bg)]/95 backdrop-blur transition-all duration-300">
+  <div id="header-container" class="container-shell flex items-center justify-between py-4 transition-all duration-300">
+    <a href="/" class="text-sm font-extrabold uppercase tracking-[0.12em] text-[var(--color-text)] hover:text-[var(--color-brand-soft)] transition-colors">{brandName}</a>
     <nav class="hidden gap-5 text-sm font-semibold text-[var(--color-text-muted)] md:flex">
       <a href="#servicios" class="hover:text-[var(--color-brand-soft)]">Servicios</a>
       <a href="#proceso" class="hover:text-[var(--color-brand-soft)]">Proceso</a>
@@ -37,3 +37,28 @@ const { brandName, whatsappUrl, phoneUrl, callLabel } = Astro.props;
     </div>
   </div>
 </header>
+
+<script>
+  const header = document.getElementById('main-header');
+  const container = document.getElementById('header-container');
+
+  if (header && container) {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        header.classList.add('shadow-xl', 'shadow-black/10', 'dark:shadow-black/50', 'bg-[var(--color-bg)]/100', 'border-b-[var(--color-brand-soft)]/20');
+        header.classList.remove('bg-[var(--color-bg)]/95', 'border-black/5', 'dark:border-white/10');
+        container.classList.remove('py-4');
+        container.classList.add('py-2');
+      } else {
+        header.classList.remove('shadow-xl', 'shadow-black/10', 'dark:shadow-black/50', 'bg-[var(--color-bg)]/100', 'border-b-[var(--color-brand-soft)]/20');
+        header.classList.add('bg-[var(--color-bg)]/95', 'border-black/5', 'dark:border-white/10');
+        container.classList.remove('py-2');
+        container.classList.add('py-4');
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    // Trigger on load in case the user refreshes mid-page
+    handleScroll();
+  }
+</script>
