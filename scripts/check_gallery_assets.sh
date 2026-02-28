@@ -2,7 +2,7 @@
 set -euo pipefail
 
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-GALLERY_DIR="$ROOT_DIR/site/public/images/gallery"
+GALLERY_DIR="$ROOT_DIR/site/src/assets/gallery"
 ALLOW_MISSING=0
 
 if [[ "${1:-}" == "--allow-missing" ]]; then

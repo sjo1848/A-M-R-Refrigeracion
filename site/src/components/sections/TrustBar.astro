@@ -8,8 +8,8 @@ const { points } = Astro.props;
 
 <section class="-mt-6 pb-6 md:-mt-8">
   <div class="container-shell grid gap-3 md:grid-cols-2 lg:grid-cols-5">
-    {points.map((point) => (
-      <article class="rounded-xl border border-white/10 bg-[var(--color-surface)] p-4">
+    {points.map((point, index) => (
+      <article class={`animate-on-scroll rounded-xl border border-black/5 dark:border-white/10 bg-[var(--color-surface)]/80 p-4 backdrop-blur-sm transition-all hover:-translate-y-1 hover:bg-[var(--color-surface-soft)] hover:shadow-lg hover:shadow-[var(--color-brand)]/5 delay-${(index % 5) * 100}`}>
         <p class="text-sm font-semibold text-[var(--color-text)]">{point}</p>
       </article>
     ))}
