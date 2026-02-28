@@ -37,19 +37,19 @@ const getImageMetadata = (srcPath: string) => {
             class="relative h-48 w-full overflow-hidden cursor-pointer" 
              onclick={`const d = document.getElementById('lightbox-${index}'); if(d) d.showModal();`}
           >
-            {metadata ? (
-              <Image
-                src={metadata}
-                alt={image.alt}
+	            {metadata ? (
+	              <Image
+	                src={metadata}
+	                alt={image.alt}
                 width={600}
                 class="js-gallery-image h-48 w-full object-cover transition-transform duration-500 group-hover:scale-110"
               />
-            ) : (
-              <img
-                src={image.src.replace('/public', '')}
-                alt={image.alt}
-                loading="lazy"
-                decoding="async"
+	            ) : (
+	              <img
+	                src="/images/placeholder-work.svg"
+	                alt={image.alt}
+	                loading="lazy"
+	                decoding="async"
                 width="600"
                 data-fallback-src="/images/placeholder-work.svg"
                 class="js-gallery-image h-48 w-full object-cover transition-transform duration-500 group-hover:scale-110"
@@ -72,11 +72,10 @@ const getImageMetadata = (srcPath: string) => {
 {images.map((image, index) => {
   const metadata = getImageMetadata(image.src);
   return (
-  <dialog 
-    id={`lightbox-${index}`} 
-    class="bg-transparent m-auto p-0 max-h-[95vh] max-w-[95vw] rounded-xl outline-none backdrop:bg-black/95 backdrop:backdrop-blur-sm shadow-2xl open:animate-in open:fade-in-0 open:zoom-in-95 duration-300" 
-    onclick="if(event.target === this) this.close()"
-  >
+	  <dialog 
+	    id={`lightbox-${index}`} 
+	    class="js-lightbox-dialog bg-transparent m-auto p-0 max-h-[95vh] max-w-[95vw] rounded-xl outline-none backdrop:bg-black/95 backdrop:backdrop-blur-sm shadow-2xl open:animate-in open:fade-in-0 open:zoom-in-95 duration-300"
+	  >
     <div class="relative w-full h-full flex flex-col items-center justify-center p-4">
       <button 
         onclick={`document.getElementById('lightbox-${index}').close()`}
@@ -94,12 +93,12 @@ const getImageMetadata = (srcPath: string) => {
           width={1200}
           class="max-h-[85vh] w-auto max-w-full object-contain rounded-lg shadow-[0_0_50px_rgba(0,0,0,0.3)] dark:shadow-[0_0_50px_rgba(0,0,0,0.5)] border border-black/10 dark:border-white/10"
         />
-      ) : (
-        <img
-          src={image.src.replace('/public', '')} 
-          alt={image.alt}
-          class="max-h-[85vh] w-auto max-w-full object-contain rounded-lg shadow-[0_0_50px_rgba(0,0,0,0.3)] dark:shadow-[0_0_50px_rgba(0,0,0,0.5)] border border-black/10 dark:border-white/10"
-        />
+	      ) : (
+	        <img
+	          src="/images/placeholder-work.svg"
+	          alt={image.alt}
+	          class="max-h-[85vh] w-auto max-w-full object-contain rounded-lg shadow-[0_0_50px_rgba(0,0,0,0.3)] dark:shadow-[0_0_50px_rgba(0,0,0,0.5)] border border-black/10 dark:border-white/10"
+	        />
       )}
       <p class="mt-4 text-center text-white text-sm md:text-base font-medium max-w-2xl px-4">{image.alt}</p>
     </div>
@@ -112,6 +111,14 @@ const getImageMetadata = (srcPath: string) => {
       const fallback = image.getAttribute('data-fallback-src');
       if (fallback && image.getAttribute('src') !== fallback) {
         image.setAttribute('src', fallback);
+      }
+    });
+  });
+
+  document.querySelectorAll('.js-lightbox-dialog').forEach((dialog) => {
+    dialog.addEventListener('click', (ev) => {
+      if (ev.target === dialog) {
+        dialog.close();
       }
     });
   });

@@ -143,13 +143,6 @@ Ubicacion esperada:
 - `site/src/assets/gallery/amr-03.jpg`
 - `site/src/assets/gallery/amr-04.jpg`
 
-Compatibilidad de rutas legacy (`/images/gallery/*`) para paginas de servicio:
-
-- `site/public/images/gallery/amr-01.jpg`
-- `site/public/images/gallery/amr-02.jpg`
-- `site/public/images/gallery/amr-03.jpg`
-- `site/public/images/gallery/amr-04.jpg`
-
 Chequeo rapido de faltantes:
 
 ```bash
