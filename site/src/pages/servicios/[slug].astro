@@ -1,5 +1,6 @@
 ---
 // src/pages/servicios/[slug].astro
+import { Image } from 'astro:assets';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Header from '../../components/sections/Header.astro';
 import Footer from '../../components/sections/Footer.astro';
@@ -40,7 +41,19 @@ const canonical = siteUrl ? new URL(Astro.url.pathname, siteUrl).toString() : As
 // Configuración de Schema enriquecido para el servicio específico
 const schema = buildLocalBusinessSchema(amrContent, new URL(canonical), whatsappBaseUrl);
 
-// Aquí podrías crear un schema OfferCatalog si lo requieres, por ahora pasamos el base.
+const localImages = import.meta.glob<{ default: ImageMetadata }>('../../assets/gallery/*.{jpeg,jpg,png,gif,webp}', {
+  eager: true,
+});
+
+const resolveLocalImage = (imageRef: string | undefined) => {
+  if (!imageRef) return null;
+  const filename = imageRef.split('/').pop();
+  if (!filename) return null;
+  const match = Object.keys(localImages).find((path) => path.endsWith(`/${filename}`));
+  return match ? localImages[match].default : null;
+};
+
+const serviceImage = resolveLocalImage(service.relatedGalleryImages[0]);
 ---
 
 <BaseLayout
@@ -101,11 +114,20 @@ const schema = buildLocalBusinessSchema(amrContent, new URL(canonical), whatsapp
         </div>
         
         <div class="relative w-full aspect-square md:aspect-auto md:h-full rounded-2xl overflow-hidden shadow-2xl border border-white/10">
-            <img 
-              src={service.relatedGalleryImages[0]?.replace('/public', '') || "/images/placeholder-work.svg"}
-              alt={`Técnico trabajando en ${service.title.toLowerCase()}`}
-              class="w-full h-full object-cover"
-            />
+            {serviceImage ? (
+              <Image
+                src={serviceImage}
+                alt={`Técnico trabajando en ${service.title.toLowerCase()}`}
+                width={1200}
+                class="w-full h-full object-cover"
+              />
+            ) : (
+              <img
+                src="/images/placeholder-work.svg"
+                alt={`Técnico trabajando en ${service.title.toLowerCase()}`}
+                class="w-full h-full object-cover"
+              />
+            )}
             <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
             <div class="absolute bottom-6 left-6 right-6 flex items-center gap-3">
               <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white text-black">

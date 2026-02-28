@@ -111,7 +111,7 @@ export const amrContent: LandingContent = {
         'Cambio de termostatos y sensores'
       ],
       relatedGalleryImages: [
-        '/images/gallery/amr-01.jpg'
+        'amr-01.jpg'
       ]
     },
     {
@@ -127,8 +127,8 @@ export const amrContent: LandingContent = {
         'Limpieza de circuitos y filtros de habitaculo'
       ],
       relatedGalleryImages: [
-        '/images/gallery/amr-03.jpg',
-        '/images/gallery/amr-04.jpg'
+        'amr-03.jpg',
+        'amr-04.jpg'
       ]
     },
     {
@@ -144,7 +144,7 @@ export const amrContent: LandingContent = {
         'Ajuste de presostatos y electrovalvulas'
       ],
       relatedGalleryImages: [
-        '/images/gallery/amr-02.jpg'
+        'amr-02.jpg'
       ]
     }
   ],
@@ -212,19 +212,19 @@ export const amrContent: LandingContent = {
     'Cobertura en Gran Mendoza con coordinacion por WhatsApp. Tiempos de visita sujetos a zona y disponibilidad.',
   gallery: [
     {
-      src: '/images/gallery/amr-01.jpg',
+      src: 'amr-01.jpg',
       alt: 'Tecnico de A.M.R en mantenimiento de sistemas de aire comercial',
     },
     {
-      src: '/images/gallery/amr-02.jpg',
+      src: 'amr-02.jpg',
       alt: 'Servicio tecnico de aire acondicionado split en instalacion domiciliaria',
     },
     {
-      src: '/images/gallery/amr-03.jpg',
+      src: 'amr-03.jpg',
       alt: 'Trabajo de aire acondicionado automotor con equipo de diagnostico en via publica',
     },
     {
-      src: '/images/gallery/amr-04.jpg',
+      src: 'amr-04.jpg',
       alt: 'Diagnostico de refrigeracion automotriz en camion de flota',
     },
   ],
