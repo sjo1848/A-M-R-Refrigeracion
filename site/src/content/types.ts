@@ -4,6 +4,17 @@ export interface ServiceCategory {
   priority: 'high' | 'medium' | 'base';
 }
 
+export interface ServiceDetail {
+  slug: string;
+  title: string;
+  seoTitle: string;
+  seoDescription: string;
+  description: string;
+  features: string[];
+  relatedGalleryImages: string[];
+}
+
+
 export interface WhyChoosePoint {
   title: string;
   description: string;
@@ -64,6 +75,7 @@ export interface LandingContent {
   trustPoints: string[];
   processSteps: ProcessStep[];
   serviceCategories: ServiceCategory[];
+  servicesDetails: ServiceDetail[];
   technicalScope: TechnicalScopeItem[];
   whyChoosePoints: WhyChoosePoint[];
   zones: string[];

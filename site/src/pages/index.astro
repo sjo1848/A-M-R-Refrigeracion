@@ -80,7 +80,7 @@ const schema = buildLocalBusinessSchema(amrContent, new URL(canonical), whatsapp
   <TrustBar points={amrContent.trustPoints} />
   <ProcessFlow steps={amrContent.processSteps} />
   <Services
-    categories={amrContent.serviceCategories}
+    services={amrContent.servicesDetails}
     whatsappUrl={whatsappServicesUrl}
     ctaLabel={amrContent.cta.servicesLabel}
   />
