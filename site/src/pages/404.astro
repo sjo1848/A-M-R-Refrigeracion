@@ -1,0 +1,67 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/sections/Header.astro';
+import Footer from '../components/sections/Footer.astro';
+import FloatingWhatsapp from '../components/sections/FloatingWhatsapp.astro';
+import { amrContent } from '../content/amr';
+import { buildTelUrl, buildWhatsAppUrl } from '../utils/whatsapp';
+
+const whatsappUrl = buildWhatsAppUrl(
+  amrContent.contact.whatsapp,
+  "Hola, no encontré la página que buscaba en la web, ¿podrían ayudarme?",
+  '404'
+);
+const phoneUrl = buildTelUrl(amrContent.contact.phoneLabel);
+---
+
+<BaseLayout 
+  title="Página no encontrada | A.M.R. Refrigeración" 
+  description="Lo sentimos, la página que buscas no existe o ha sido movida."
+>
+  <Header
+    brandName={amrContent.brand.name}
+    whatsappUrl={whatsappUrl}
+    phoneUrl={phoneUrl}
+    callLabel={amrContent.cta.callLabel}
+  />
+
+  <main class="flex flex-col items-center justify-center min-h-[70vh] px-4 text-center">
+    <div class="relative mb-8">
+      <h1 class="text-9xl font-black text-[var(--color-brand)]/10 dark:text-white/5 select-none">404</h1>
+      <p class="absolute inset-0 flex items-center justify-center text-3xl md:text-4xl font-extrabold text-[var(--color-text)]">
+        ¡Ups! Perdimos el frío
+      </p>
+    </div>
+    
+    <p class="max-w-md text-[var(--color-text-muted)] mb-10 text-lg">
+      La página que estás buscando no existe. Puede que la dirección haya cambiado o que el enlace sea incorrecto.
+    </p>
+
+    <div class="flex flex-col sm:flex-row gap-4 items-center">
+      <a 
+        href="/" 
+        class="inline-flex items-center justify-center rounded-xl bg-[var(--color-text)] px-8 py-4 text-sm font-bold text-[var(--color-bg)] transition hover:opacity-90"
+      >
+        Volver al inicio
+      </a>
+      <a 
+        href={whatsappUrl} 
+        target="_blank"
+        rel="noreferrer"
+        class="inline-flex items-center justify-center gap-2 rounded-xl border border-[var(--color-whatsapp)]/30 px-8 py-4 text-sm font-bold text-[var(--color-whatsapp)] transition hover:bg-[var(--color-whatsapp)]/5"
+      >
+        Consultar por WhatsApp
+      </a>
+    </div>
+  </main>
+
+  <Footer
+    brandName={amrContent.brand.name}
+    businessLabel={amrContent.footer.businessLabel}
+    phoneLabel={amrContent.contact.phoneLabel}
+    phoneUrl={phoneUrl}
+    addressReference={amrContent.footer.addressReference}
+    coverageLabel={amrContent.footer.coverageLabel}
+  />
+  <FloatingWhatsapp whatsappUrl={whatsappUrl} />
+</BaseLayout>

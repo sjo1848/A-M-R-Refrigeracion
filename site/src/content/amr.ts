@@ -97,6 +97,57 @@ export const amrContent: LandingContent = {
       ],
     },
   ],
+  servicesDetails: [
+    {
+      slug: 'reparacion-heladeras-mendoza',
+      title: 'Reparacion de Heladeras en Mendoza',
+      seoTitle: 'Servicio Tecnico de Heladeras en Mendoza | A.M.R Refrigeracion',
+      seoDescription: 'Reparacion de heladeras familiares y comerciales a domicilio en el Gran Mendoza. Diagnostico claro y profesional.',
+      description: 'Ofrecemos un servicio integral para la reparacion de todo tipo de heladeras (familiares, no frost, comerciales). Identificamos rapidamente fallas comunes como falta de frio, perdidas de gas, o fallas en el motor compresor.',
+      features: [
+        'Reparacion de plaquetas electronicas',
+        'Carga de gas refrigerante',
+        'Desbloqueo de sistemas No Frost',
+        'Cambio de termostatos y sensores'
+      ],
+      relatedGalleryImages: [
+        '/images/gallery/amr-01.jpg'
+      ]
+    },
+    {
+      slug: 'aire-acondicionado-automotor-mendoza',
+      title: 'Aire Acondicionado Automotor en Mendoza',
+      seoTitle: 'Aire Acondicionado Automotor en Mendoza | A.M.R',
+      seoDescription: 'Carga de gas y reparacion de aire acondicionado automotriz en Mendoza. Atendemos autos particulares y flotas comerciales.',
+      description: 'Especialistas en climatizacion vehicular. Revisamos circuitos en busca de fugas, realizamos vacio, carga de gas ecologico y reparamos compresores para que tu vehiculo enfrie como el primer dia.',
+      features: [
+        'Diagnostico de fugas con herramientas de precision',
+        'Carga de gas refrigerante R134a',
+        'Reparacion de compresores y condensadores',
+        'Limpieza de circuitos y filtros de habitaculo'
+      ],
+      relatedGalleryImages: [
+        '/images/gallery/amr-03.jpg',
+        '/images/gallery/amr-04.jpg'
+      ]
+    },
+    {
+      slug: 'reparacion-lavarropas-mendoza',
+      title: 'Reparacion de Lavarropas Automaticos',
+      seoTitle: 'Reparacion de Lavarropas en Mendoza | Tecnico a Domicilio',
+      seoDescription: 'Servicio tecnico capacitado de lavarropas automaticos en Mendoza. Solucionamos fallas de centrifugado, carga de agua y problemas electronicos.',
+      description: 'Reparacion de lavarropas automaticos de todas las marcas. Brindamos solucion a tambores trabados, bombas de desagote quemadas y plaquetas que no responden. Presupuesto directo al revisar la unidad.',
+      features: [
+        'Cambio de rulemanes y retenes',
+        'Reparacion y sustitucion de bomba de desagote',
+        'Diagnostico de plaqueta principal',
+        'Ajuste de presostatos y electrovalvulas'
+      ],
+      relatedGalleryImages: [
+        '/images/gallery/amr-02.jpg'
+      ]
+    }
+  ],
   technicalScope: [
     {
       title: 'Heladeras y freezers',

@@ -1,7 +1,7 @@
 export function buildWhatsAppUrl(
   phone: string,
   message: string,
-  source?: 'header' | 'hero' | 'servicios' | 'final' | 'flotante',
+  source?: 'header' | 'hero' | 'servicios' | 'servicio-detalle' | '404' | 'final' | 'flotante',
 ): string {
   const cleanedPhone = phone.replace(/\D/g, '');
   const sourceSuffix = source ? `\nOrigen de contacto: ${source}` : '';
