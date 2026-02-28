@@ -14,6 +14,20 @@ export function buildLocalBusinessSchema(
     },
   }));
 
+  const reviews = content.testimonials.map((testimonial) => ({
+    '@type': 'Review',
+    reviewRating: {
+      '@type': 'Rating',
+      ratingValue: '5',
+      bestRating: '5',
+    },
+    author: {
+      '@type': 'Person',
+      name: testimonial.name,
+    },
+    reviewBody: testimonial.quote,
+  }));
+
   return {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
@@ -41,6 +55,12 @@ export function buildLocalBusinessSchema(
       '@type': 'OfferCatalog',
       name: 'Servicios de refrigeracion',
       itemListElement: serviceItems,
+    },
+    review: reviews,
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: '5.0',
+      reviewCount: reviews.length.toString(),
     },
     sameAs: [whatsappUrl],
   };

@@ -1,5 +1,6 @@
 ---
 import SectionTitle from '../ui/SectionTitle.astro';
+import { Image } from 'astro:assets';
 import type { GalleryItem } from '../../content/types';
 
 interface Props {
@@ -7,6 +8,16 @@ interface Props {
 }
 
 const { images } = Astro.props;
+
+// Obtener las imagenes procesadas de forma dinamica usando import.meta.glob
+const localImages = import.meta.glob<{ default: ImageMetadata }>('/src/assets/gallery/*.{jpeg,jpg,png,gif,webp}', { eager: true });
+
+const getImageMetadata = (srcPath: string) => {
+  const filename = srcPath.split('/').pop();
+  if (!filename) return null;
+  const match = Object.keys(localImages).find(path => path.endsWith('/' + filename));
+  return match ? localImages[match].default : null;
+};
 ---
 
 <section class="py-14" id="trabajos">
@@ -17,24 +28,83 @@ const { images } = Astro.props;
       description="Espacio listo para reemplazar con fotos reales del caso piloto A.M.R."
     />
     <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-      {images.map((image) => (
-        <figure class="overflow-hidden rounded-xl border border-white/10 bg-[var(--color-surface)]">
-          <img
-            src={image.src}
-            alt={image.alt}
-            loading="lazy"
-            decoding="async"
-            width="1200"
-            height="900"
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-            data-fallback-src="/images/placeholder-work.svg"
-            class="js-gallery-image h-48 w-full object-cover"
-          />
+      {images.map((image, index) => {
+        const metadata = getImageMetadata(image.src);
+        
+        return (
+        <figure class={`animate-on-scroll rounded-xl border border-black/5 dark:border-white/10 bg-[var(--color-surface)]/80 backdrop-blur overflow-hidden group delay-${(index % 4) * 100}`}>
+          <div 
+            class="relative h-48 w-full overflow-hidden cursor-pointer" 
+             onclick={`const d = document.getElementById('lightbox-${index}'); if(d) d.showModal();`}
+          >
+            {metadata ? (
+              <Image
+                src={metadata}
+                alt={image.alt}
+                width={600}
+                class="js-gallery-image h-48 w-full object-cover transition-transform duration-500 group-hover:scale-110"
+              />
+            ) : (
+              <img
+                src={image.src.replace('/public', '')}
+                alt={image.alt}
+                loading="lazy"
+                decoding="async"
+                width="600"
+                data-fallback-src="/images/placeholder-work.svg"
+                class="js-gallery-image h-48 w-full object-cover transition-transform duration-500 group-hover:scale-110"
+              />
+            )}
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent dark:from-black/80 dark:via-black/20 dark:to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 flex items-center justify-center pointer-events-none">
+              <span class="translate-y-4 rounded-full bg-white/20 p-3 backdrop-blur shadow-lg transition-transform duration-300 group-hover:translate-y-0 text-white border border-white/30">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="size-6">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607ZM10.5 7.5v6m3-3h-6" />
+                </svg>
+              </span>
+            </div>
+          </div>
         </figure>
-      ))}
+      )})}
     </div>
   </div>
 </section>
+
+{images.map((image, index) => {
+  const metadata = getImageMetadata(image.src);
+  return (
+  <dialog 
+    id={`lightbox-${index}`} 
+    class="bg-transparent m-auto p-0 max-h-[95vh] max-w-[95vw] rounded-xl outline-none backdrop:bg-black/95 backdrop:backdrop-blur-sm shadow-2xl open:animate-in open:fade-in-0 open:zoom-in-95 duration-300" 
+    onclick="if(event.target === this) this.close()"
+  >
+    <div class="relative w-full h-full flex flex-col items-center justify-center p-4">
+      <button 
+        onclick={`document.getElementById('lightbox-${index}').close()`}
+        class="absolute -top-12 right-0 md:-right-12 md:top-0 text-white/70 hover:text-white transition-colors z-50 p-2 cursor-pointer bg-black/50 hover:bg-black/70 rounded-full"
+        aria-label="Cerrar imagen ampliada"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="size-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+        </svg>
+      </button>
+      {metadata ? (
+        <Image
+          src={metadata}
+          alt={image.alt}
+          width={1200}
+          class="max-h-[85vh] w-auto max-w-full object-contain rounded-lg shadow-[0_0_50px_rgba(0,0,0,0.3)] dark:shadow-[0_0_50px_rgba(0,0,0,0.5)] border border-black/10 dark:border-white/10"
+        />
+      ) : (
+        <img
+          src={image.src.replace('/public', '')} 
+          alt={image.alt}
+          class="max-h-[85vh] w-auto max-w-full object-contain rounded-lg shadow-[0_0_50px_rgba(0,0,0,0.3)] dark:shadow-[0_0_50px_rgba(0,0,0,0.5)] border border-black/10 dark:border-white/10"
+        />
+      )}
+      <p class="mt-4 text-center text-white text-sm md:text-base font-medium max-w-2xl px-4">{image.alt}</p>
+    </div>
+  </dialog>
+)})}
 
 <script is:inline>
   document.querySelectorAll('.js-gallery-image').forEach((image) => {

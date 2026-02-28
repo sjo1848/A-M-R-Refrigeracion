@@ -1,28 +1,97 @@
 @import "tailwindcss";
 
 :root {
-  --color-bg: #0b0b0d;
-  --color-surface: #15161a;
-  --color-surface-soft: #1b1d24;
-  --color-brand: #c2144d;
-  --color-brand-soft: #e04a78;
-  --color-text: #f5f7fa;
-  --color-text-muted: #b8bcc6;
+  /* LIGHT MODE (Default) */
+  --color-bg: #f8fafc;
+  --color-surface: rgba(255, 255, 255, 0.95);
+  --color-surface-soft: rgba(241, 245, 249, 0.8);
+  --color-brand: #e6195c;
+  --color-brand-soft: #ff2a75;
+  --color-text: #0f172a;
+  --color-text-muted: #475569;
   --color-whatsapp: #25d366;
   --color-whatsapp-hover: #1ea755;
+
+  --gradient-overlay: radial-gradient(circle at top left, rgba(230, 25, 92, 0.05) 0%, transparent 60%);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* DARK MODE */
+    --color-bg: #09090b;
+    --color-surface: rgba(21, 22, 26, 0.6);
+    --color-surface-soft: rgba(27, 29, 36, 0.7);
+    --color-brand: #e6195c;
+    --color-brand-soft: #ff5e8e;
+    --color-text: #f8fafc;
+    --color-text-muted: #94a3b8;
+    --gradient-overlay: radial-gradient(circle at top left, rgba(28, 31, 41, 0.8) 0%, transparent 60%);
+  }
 }
 
 html,
 body {
   margin: 0;
   padding: 0;
-  background: radial-gradient(circle at 8% 0%, #1c1f29 0%, #0b0b0d 45%);
+  background-color: var(--color-bg);
+  background-image: var(--gradient-overlay);
   color: var(--color-text);
   font-family: "Manrope", "Segoe UI", sans-serif;
+  scroll-behavior: smooth;
 }
 
 a {
   text-decoration: none;
+}
+
+/* Animations */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float-slow {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.animate-on-scroll {
+  opacity: 0;
+  will-change: opacity, transform;
+}
+
+.animate-on-scroll.is-visible {
+  animation: fade-in-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.delay-100 {
+  animation-delay: 100ms;
+}
+
+.delay-200 {
+  animation-delay: 200ms;
+}
+
+.delay-300 {
+  animation-delay: 300ms;
+}
+
+.float-slow {
+  animation: float-slow 5s ease-in-out infinite;
 }
 
 .container-shell {

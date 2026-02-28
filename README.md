@@ -4,9 +4,11 @@ Implementacion frontend en Astro con ejecucion 100% en contenedores.
 
 ## Stack
 
-- Astro 5
+- Astro 5 (Static Site Generation)
 - Tailwind CSS 4
 - TypeScript
+- Dual Theme (Light/Dark Mode nativo)
+- SEO Local Dinámico (Rutas por zona/servicio)
 - Docker Compose
 - Nginx (staging)
 
@@ -28,6 +30,10 @@ A-M-R_Refrigeracion/
 │   ├── check_gallery_assets.sh
 │   ├── smoke_http_check.sh
 │   └── ci_smoke_staging.sh
+            ├── faq.astro (Acordeón SEO)
+│           ├── footer.astro
+│           ├── gallery.astro (Lightbox nativo)
+│           └── ... (otros componentes)
 └── site/
     ├── Dockerfile
     ├── astro.config.mjs
@@ -38,16 +44,23 @@ A-M-R_Refrigeracion/
         ├── content/
         ├── layouts/
         ├── pages/
+        │   ├── 404.astro (Error personalizado)
+        │   ├── index.astro
+        │   └── servicios/
+        │       └── [slug].astro (Páginas dinámicas)
         ├── styles/
+        │   └── global.css (Variables Dual Theme)
         └── utils/
+            ├── seo.ts (Schema JSON-LD)
+            └── whatsapp.ts
 ```
 
-## Desarrollo local
+## Desarrollo local (NUEVO: via Makefile)
 
-Desde la raiz del repo:
+Se ha incorporado un `Makefile` para facilitar los comandos. Desde la raiz del repo:
 
 ```bash
-docker compose up --build
+make dev
 ```
 
 URL:
@@ -57,8 +70,15 @@ URL:
 Detener:
 
 ```bash
-docker compose down
+make down
 ```
+
+Alternativa con Docker Compose directo:
+
+```bash
+docker compose up --build
+```
+URL: `http://localhost:4321` | Detener: `docker compose down`
 
 ## Validacion tecnica
 
@@ -137,10 +157,12 @@ Workflow incluido:
 
 Quality gate en cada push/PR:
 
-- `npm ci && npm run check && npm run build` en contenedor `node:20-alpine`
-- `./scripts/check_dist_integrity.sh`
-- `./scripts/check_gallery_assets.sh --allow-missing`
-- `./scripts/ci_smoke_staging.sh`
+  - `./scripts/check_gallery_assets.sh --allow-missing`
+  - `./scripts/ci_smoke_staging.sh`
+
+## DevX y Herramientas Locales
+
+Se recomienda correr el `Makefile` (`make check`) localmente antes de hacer push para asegurar que la compilación de Astro y las integraciones sean correctas y que no existan errores de tipado o de componentes no utilizados, mejorando así la calidad del código mediante comprobaciones pre-commit rápidas.
 
 ## Variables de entorno
 
