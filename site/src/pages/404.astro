@@ -13,6 +13,7 @@ const whatsappUrl = buildWhatsAppUrl(
   '404'
 );
 const phoneUrl = buildTelUrl(amrContent.contact.phoneLabel);
+const instagramUrl = import.meta.env.PUBLIC_INSTAGRAM_URL ?? '';
 ---
 
 <BaseLayout
@@ -58,6 +59,7 @@ const phoneUrl = buildTelUrl(amrContent.contact.phoneLabel);
     businessLabel={amrContent.footer.businessLabel}
     phoneLabel={amrContent.contact.phoneLabel}
     phoneUrl={phoneUrl}
+    instagramUrl={instagramUrl}
     addressReference={amrContent.footer.addressReference}
     coverageLabel={amrContent.footer.coverageLabel}
     serviceConditions={amrContent.legal.serviceConditions}

@@ -33,6 +33,7 @@ const whatsappServiceUrl = buildWhatsAppUrl(
   `Hola, necesito consultar por el servicio de: ${service.title}.\nEstoy en Mendoza.`,
   'servicio-detalle'
 );
+const instagramUrl = import.meta.env.PUBLIC_INSTAGRAM_URL ?? '';
 
 const siteUrl = import.meta.env.PUBLIC_SITE_URL;
 const canonical = siteUrl ? new URL(Astro.url.pathname, siteUrl).toString() : Astro.url.toString();
@@ -155,6 +156,7 @@ const serviceImage = resolveLocalImage(service.relatedGalleryImages[0]);
     businessLabel={amrContent.footer.businessLabel}
     phoneLabel={amrContent.contact.phoneLabel}
     phoneUrl={phoneUrl}
+    instagramUrl={instagramUrl}
     addressReference={amrContent.footer.addressReference}
     coverageLabel={amrContent.footer.coverageLabel}
     serviceConditions={amrContent.legal.serviceConditions}

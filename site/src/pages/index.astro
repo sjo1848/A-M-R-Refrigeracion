@@ -51,6 +51,7 @@ const whatsappFloatingUrl = buildWhatsAppUrl(
 const topSellingService =
   amrContent.servicesDetails.find((service) => service.slug === 'aire-acondicionado-automotor-mendoza') ??
   amrContent.servicesDetails[0];
+const instagramUrl = import.meta.env.PUBLIC_INSTAGRAM_URL ?? '';
 const siteUrl = import.meta.env.PUBLIC_SITE_URL;
 const canonical = siteUrl ? new URL('/', siteUrl).toString() : Astro.url.toString();
 const schema = buildLocalBusinessSchema(amrContent, new URL(canonical), whatsappBaseUrl);
@@ -87,7 +88,7 @@ const schema = buildLocalBusinessSchema(amrContent, new URL(canonical), whatsapp
     commercialNotice={amrContent.legal.commercialNotice}
     backgroundImage={heroBg}
   />
-  <Gallery images={amrContent.gallery} />
+  <Gallery images={amrContent.gallery} instagramUrl={instagramUrl} />
   <Services
     services={amrContent.servicesDetails}
     whatsappUrl={whatsappServicesUrl}
@@ -119,6 +120,7 @@ const schema = buildLocalBusinessSchema(amrContent, new URL(canonical), whatsapp
     businessLabel={amrContent.footer.businessLabel}
     phoneLabel={amrContent.contact.phoneLabel}
     phoneUrl={phoneUrl}
+    instagramUrl={instagramUrl}
     addressReference={amrContent.footer.addressReference}
     coverageLabel={amrContent.footer.coverageLabel}
     serviceConditions={amrContent.legal.serviceConditions}

@@ -189,11 +189,13 @@ Archivo base:
 Variable:
 
 - `PUBLIC_SITE_URL`
+- `PUBLIC_INSTAGRAM_URL` (opcional)
 
 Ejemplo:
 
 ```env
 PUBLIC_SITE_URL=https://tu-dominio.com
+PUBLIC_INSTAGRAM_URL=https://instagram.com/tu_cuenta
 ```
 
 ## Puntos tecnicos clave
